@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phương án A — VLearn AI Notes</title>
+<style>
+:root{
+  --bg:#f5f6f8; --card:#fff; --ink:#15181e; --muted:#6b7280; --line:#e4e7ec;
+  --brand:#2f6bff; --brand-soft:#eef3ff; --warn:#b45309; --warn-soft:#fff8ed;
+  --ok:#047857; --ok-soft:#ecfdf5; --mark:#fff2b8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px;line-height:1.55}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+/* ---------- shared header ---------- */
+.top{background:#fff;border-bottom:1px solid var(--line);padding:10px 20px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+.brand{font-weight:700;letter-spacing:-.2px}
+.brand span{color:var(--brand)}
+.lesson{color:var(--muted);font-size:13.5px}
+.badge{margin-left:auto;background:var(--brand-soft);color:var(--brand);
+  font-weight:600;font-size:12.5px;padding:4px 10px;border-radius:99px}
+.tbtn{border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:13px;color:var(--muted);background:#fff}
+.tbtn:hover{background:#f3f4f6;color:var(--ink)}
+/* ---------- layout ---------- */
+.wrap{max-width:1120px;margin:20px auto 60px;padding:0 20px;
+  display:grid;grid-template-columns:1.45fr 1fr;gap:20px;align-items:start}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.pad{padding:16px 18px}
+h2{font-size:15px;margin:0 0 2px}
+.hint{color:var(--muted);font-size:13px;margin:0}
+/* ---------- player ---------- */
+.stage{background:#171a21;border-radius:14px 14px 0 0;padding:22px 24px 18px;color:#fff}
+.slidechip{display:inline-block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:#9aa4b8;border:1px solid #333a48;border-radius:6px;padding:2px 8px;margin-bottom:12px}
+.slidetitle{font-size:21px;font-weight:700;margin:0 0 14px}
+.bul{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;margin:0 -10px;
+  cursor:pointer;border:1px dashed transparent}
+.bul:hover{border-color:#3a4252;background:#1e222b}
+.bul .dot{color:#7d8aa3;margin-top:1px}
+.bul.on{background:var(--mark);color:#15181e;border-color:transparent}
+.bul.on .dot{color:#a9821c}
+.say{margin-top:16px;border-top:1px solid #2a3040;padding-top:14px}
+.saylabel{font-size:11.5px;color:#8b95ab;margin-bottom:6px}
+.saytext{padding:9px 11px;margin:0 -11px;border-radius:8px;cursor:pointer;border:1px dashed transparent;font-style:italic;color:#e7ebf3}
+.saytext:hover{border-color:#3a4252;background:#1e222b}
+.saytext.on{background:var(--mark);color:#15181e;border-color:transparent;font-style:normal}
+.bar{background:#20242e;border-radius:0 0 14px 14px;padding:11px 18px;display:flex;align-items:center;gap:14px;
+  color:#c3cad8;font-size:13px;flex-wrap:wrap}
+.track{flex:1;min-width:120px;height:5px;background:#333a48;border-radius:99px;position:relative}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--brand);border-radius:99px;transition:width .3s}
+.play{background:var(--brand);color:#fff;border-radius:8px;padding:7px 14px;font-weight:600;font-size:13.5px}
+.play[disabled]{background:#39415a;color:#8b95ab;cursor:default}
+/* ---------- marking controls ---------- */
+.tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.tool{border:1px solid var(--line);border-radius:8px;padding:7px 12px;font-size:13.5px;background:#fff}
+.tool:hover{background:#f3f4f6}
+.tool.on{background:var(--warn-soft);border-color:#f3d19b;color:var(--warn);font-weight:600}
+.noterow{display:flex;gap:8px;margin-top:10px}
+.noterow input{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font:inherit}
+.noterow input:focus{outline:2px solid var(--brand-soft);border-color:var(--brand)}
+.add{background:var(--brand);color:#fff;border-radius:8px;padding:8px 14px;font-weight:600;font-size:13.5px}
+/* ---------- right panel ---------- */
+.mark{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;background:#fbfcfd}
+.mark .k{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:center;margin-bottom:3px}
+.mark .x{margin-left:auto;color:#9ca3af;font-size:16px;line-height:1}
+.mark .x:hover{color:#dc2626}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:18px;text-align:center;color:var(--muted);font-size:13.5px}
+.cta{width:100%;background:var(--brand);color:#fff;border-radius:10px;padding:12px;font-weight:700;margin-top:12px}
+.cta[disabled]{background:#e5e7eb;color:#9ca3af;cursor:default}
+.limit{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+/* ---------- note view ---------- */
+.note{max-width:800px;margin:20px auto 60px;padding:0 20px}
+.notehead{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:16px}
+.blk{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.blk h3{font-size:14px;margin:0 0 6px;color:var(--muted);font-weight:600}
+.blk li{margin:5px 0}
+.src{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:99px;
+  background:var(--ok-soft);color:var(--ok);margin-left:6px;border:1px solid #b8e7d3}
+.src.q{background:var(--warn-soft);color:var(--warn);border-color:#f3d19b}
+.footnote{background:var(--warn-soft);border:1px solid #f3d19b;color:#7c4a06;
+  border-radius:10px;padding:12px 14px;font-size:13.5px;margin-top:22px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.ghost{border:1px solid var(--line);border-radius:8px;padding:9px 14px;background:#fff;font-size:13.5px}
+.ghost:hover{background:#f3f4f6}
+.primary{background:var(--brand);color:#fff;border-radius:8px;padding:9px 16px;font-weight:600;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#15181e;color:#fff;
+  padding:10px 18px;border-radius:99px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:50}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">V<span>Learn</span></div>
+  <div class="lesson">Bài 4 — Vector Database &amp; RAG cơ bản</div>
+  <div class="badge">Phương án A</div>
+  <button class="tbtn" onclick="reset()">Bắt đầu lại</button>
+  <a class="tbtn" href="index.html" style="text-decoration:none">Tất cả phương án</a>
+</div>
+
+<div id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= SHARED FIXTURE (giống hệt ở A, B, C) ================= */
+const MOMENTS = [
+  { t:"12:40", slide:"Slide 5", title:"Embedding là gì?",
+    bullets:["Biểu diễn văn bản thành vector số","Khoảng cách vector ≈ khoảng cách ngữ nghĩa"],
+    say:"Chỗ này slide không ghi: embedding model lúc index và lúc query phải giống nhau. Khác model là kết quả ra rác — lỗi này rất hay gặp." },
+  { t:"18:05", slide:"Slide 6", title:"Chunking tài liệu",
+    bullets:["Cắt tài liệu thành đoạn nhỏ trước khi embed","Kích thước chunk ảnh hưởng chất lượng truy hồi"],
+    say:"Kinh nghiệm của mình là chunk 300–500 token, overlap khoảng 15%. Không có con số vàng đâu, phải thử theo tài liệu của các bạn." },
+  { t:"24:30", slide:"Slide 7", title:"Vì sao cần re-ranking",
+    bullets:["Top-k theo cosine chưa chắc đúng ý người hỏi","Re-ranker chấm lại thứ hạng kết quả"],
+    say:"Re-ranking đắt — mỗi query gọi thêm một model nữa. Nếu top-k nhỏ và tài liệu đồng nhất thì bỏ qua cũng được." }
+];
+const TOTAL = 32;
+const MIN = t => parseInt(t.split(":")[0],10) + parseInt(t.split(":")[1],10)/60;
+
+/* ================= STATE ================= */
+let idx = 0, phase = "lesson", marks = [];
+
+function reset(){ idx=0; phase="lesson"; marks=[]; render(); }
+function toast(m){ const e=document.getElementById("toast"); e.textContent=m; e.classList.add("on");
+  clearTimeout(window._tt); window._tt=setTimeout(()=>e.classList.remove("on"),1800); }
+function esc(s){ return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* ---- marks ---- */
+function hasMark(kind,i,j){ return marks.some(m=>m.kind===kind&&m.m===i&&m.j===j); }
+function toggleMark(kind,i,j,text,src){
+  const at = marks.findIndex(m=>m.kind===kind&&m.m===i&&m.j===j);
+  if(at>-1){ marks.splice(at,1); } else { marks.push({kind,m:i,j,text,src}); }
+  render();
+}
+function addNote(){
+  const el=document.getElementById("ni"); const v=(el.value||"").trim();
+  if(!v){ return; }
+  marks.push({kind:"note",m:idx,j:Date.now(),text:v,src:"Bạn viết lúc "+MOMENTS[idx].t});
+  render();
+}
+function delMark(k){ marks.splice(k,1); render(); }
+
+/* ================= RENDER ================= */
+function render(){
+  document.getElementById("app").innerHTML = phase==="lesson" ? lessonView() : noteView();
+  const ni=document.getElementById("ni"); if(ni) ni.addEventListener("keydown",e=>{ if(e.key==="Enter") addNote(); });
+}
+
+function lessonView(){
+  const ended = idx >= MOMENTS.length;
+  const m = MOMENTS[Math.min(idx,MOMENTS.length-1)];
+  const now = ended ? TOTAL : MIN(m.t);
+  const pct = Math.round(now/TOTAL*100);
+
+  const stage = ended ? `
+    <div class="stage" style="text-align:center;padding:56px 24px">
+      <div style="font-size:30px;margin-bottom:8px">🎓</div>
+      <div style="font-size:19px;font-weight:700">Bài học đã kết thúc</div>
+      <div style="color:#9aa4b8;font-size:13.5px;margin-top:6px">Bài 4 · 32 phút · 3 slide đã xem</div>
+    </div>`
+  : `
+    <div class="stage">
+      <div class="slidechip">${m.slide}</div>
+      <div class="slidetitle">${esc(m.title)}</div>
+      ${m.bullets.map((b,j)=>`
+        <div class="bul ${hasMark("hl",idx,j)?"on":""}" onclick="toggleMark('hl',${idx},${j},${JSON.stringify(b).replace(/"/g,"&quot;")},'${m.slide} · ${m.t}')">
+          <span class="dot">▪</span><span>${esc(b)}</span>
+        </div>`).join("")}
+      <div class="say">
+        <div class="saylabel">GIẢNG VIÊN ĐANG NÓI — không có trên slide</div>
+        <div class="saytext ${hasMark("hl",idx,"say")?"on":""}" onclick="toggleMark('hl',${idx},'say',${JSON.stringify(m.say).replace(/"/g,"&quot;")},'Lời giảng ${m.t}')">
+          “${esc(m.say)}”
+        </div>
+      </div>
+    </div>`;
+
+  const controls = ended ? "" : `
+    <div class="tools">
+      <button class="tool ${hasMark("q",idx,"f")?"on":""}"
+        onclick="toggleMark('q',${idx},'f','${m.title}','${m.slide} · ${m.t}')">
+        ${hasMark("q",idx,"f")?"✓ Đã đánh dấu Chưa hiểu":"❓ Chưa hiểu"}
+      </button>
+      <span class="hint">Bấm vào một dòng bất kỳ ở trên để highlight.</span>
+    </div>
+    <div class="noterow">
+      <input id="ni" placeholder="Viết ghi chú / câu hỏi ngắn tại ${m.t}…">
+      <button class="add" onclick="addNote()">Thêm</button>
+    </div>`;
+
+  const panel = `
+    <div class="card pad">
+      <h2>Dấu của bạn (${marks.length})</h2>
+      <p class="hint" style="margin-bottom:12px">AI chưa làm gì cả. Nó chỉ chạy khi bạn bấm nút bên dưới.</p>
+      ${marks.length? marks.map((k,n)=>`
+        <div class="mark">
+          <div class="k">
+            <span>${k.kind==="hl"?"🖍 Highlight":k.kind==="q"?"❓ Chưa hiểu":"✍️ Ghi chú"}</span>
+            <span>·</span><span>${k.src}</span>
+            <button class="x" title="Xóa dấu" onclick="delMark(${n})">×</button>
+          </div>
+          <div>${esc(k.text)}</div>
+        </div>`).join("")
+      : `<div class="empty">Chưa có dấu nào.<br>AI sẽ không tạo ra ghi chú nào.</div>`}
+      <button class="cta" ${marks.length?"":"disabled"} onclick="phase='note';render()">
+        Tạo ghi chú từ ${marks.length} dấu
+      </button>
+      <div class="limit">Chỉ gom đúng những dấu bạn đã đánh — không tự thêm nội dung khác.</div>
+    </div>`;
+
+  return `<div class="wrap">
+    <div>
+      <div class="card" style="overflow:hidden">
+        ${stage}
+        <div class="bar">
+          <button class="play" ${ended?"disabled":""} onclick="idx++;render()">
+            ${ended?"Đã hết bài":"▶ Tiếp tục bài giảng"}
+          </button>
+          <span>${ended?"32:00":m.t}</span>
+          <div class="track"><div class="fill" style="width:${pct}%"></div></div>
+          <span>32:00</span>
+        </div>
+      </div>
+      <div class="card pad" style="margin-top:14px">
+        ${ended? `<h2>Bài học kết thúc</h2><p class="hint">Sang cột bên phải để tạo ghi chú từ những gì bạn đã đánh dấu.</p>` : controls}
+      </div>
+    </div>
+    ${panel}
+  </div>`;
+}
+
+function noteView(){
+  const groups = MOMENTS.map((m,i)=>({m,items:marks.filter(k=>k.m===i)})).filter(g=>g.items.length);
+  const missed = MOMENTS.filter((m,i)=>!marks.some(k=>k.m===i)).map(m=>m.t);
+  return `<div class="note">
+    <div class="notehead">
+      <h1 style="font-size:22px;margin:0 0 4px">Ghi chú — Bài 4 · Vector Database &amp; RAG cơ bản</h1>
+      <p class="hint">Gom từ <b>${marks.length} dấu</b> bạn đã đánh trong lúc học · AI không thêm nội dung nào khác</p>
+    </div>
+    ${groups.map(g=>`
+      <div class="blk">
+        <h3>${g.m.t} — ${esc(g.m.title)}</h3>
+        <ul style="margin:0;padding-left:18px">
+          ${g.items.map(k=>`<li>${k.kind==="q"?"<b>Chưa hiểu:</b> ":""}${esc(k.text)}<span class="src ${k.kind==="q"?"q":""}">${k.src}</span></li>`).join("")}
+        </ul>
+      </div>`).join("")}
+    ${missed.length?`<div class="footnote"><b>Những đoạn bạn không đánh dấu không nằm trong ghi chú này.</b><br>
+      Không có dấu nào ở: ${missed.join(", ")}. Muốn thêm thì quay lại bài học và đánh dấu.</div>`:""}
+    <div class="actions">
+      <button class="primary" onclick="toast('Đã lưu ghi chú.')">Lưu ghi chú</button>
+      <button class="ghost" onclick="phase='lesson';idx=0;render()">← Về bài học để đánh dấu thêm</button>
+      <button class="ghost" onclick="marks=[];phase='lesson';idx=0;render();toast('Đã xóa hết dấu.')">Xóa hết và tự viết</button>
+      <button class="ghost" onclick="reset()">Bắt đầu lại</button>
+    </div>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>

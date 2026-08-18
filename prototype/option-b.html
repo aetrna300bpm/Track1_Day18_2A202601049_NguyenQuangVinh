@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phương án B — VLearn AI Notes</title>
+<style>
+:root{
+  --bg:#f5f6f8; --card:#fff; --ink:#15181e; --muted:#6b7280; --line:#e4e7ec;
+  --brand:#2f6bff; --brand-soft:#eef3ff; --warn:#b45309; --warn-soft:#fff8ed;
+  --ok:#047857; --ok-soft:#ecfdf5; --mark:#fff2b8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:15px;line-height:1.55}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:10px 20px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;position:sticky;top:0;z-index:20}
+.brand{font-weight:700;letter-spacing:-.2px}
+.brand span{color:var(--brand)}
+.lesson{color:var(--muted);font-size:13.5px}
+.badge{margin-left:auto;background:var(--brand-soft);color:var(--brand);
+  font-weight:600;font-size:12.5px;padding:4px 10px;border-radius:99px}
+.tbtn{border:1px solid var(--line);border-radius:8px;padding:5px 11px;font-size:13px;color:var(--muted);background:#fff}
+.tbtn:hover{background:#f3f4f6;color:var(--ink)}
+.wrap{max-width:1120px;margin:20px auto 60px;padding:0 20px;
+  display:grid;grid-template-columns:1.45fr 1fr;gap:20px;align-items:start}
+@media(max-width:900px){.wrap{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px}
+.pad{padding:16px 18px}
+h2{font-size:15px;margin:0 0 2px}
+.hint{color:var(--muted);font-size:13px;margin:0}
+.stage{background:#171a21;border-radius:14px 14px 0 0;padding:22px 24px 18px;color:#fff}
+.slidechip{display:inline-block;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+  color:#9aa4b8;border:1px solid #333a48;border-radius:6px;padding:2px 8px;margin-bottom:12px}
+.slidetitle{font-size:21px;font-weight:700;margin:0 0 14px}
+.bul{display:flex;gap:10px;align-items:flex-start;padding:7px 10px;border-radius:8px;margin:0 -10px}
+.bul .dot{color:#7d8aa3;margin-top:1px}
+.say{margin-top:16px;border-top:1px solid #2a3040;padding-top:14px}
+.saylabel{font-size:11.5px;color:#8b95ab;margin-bottom:6px}
+.saytext{padding:9px 11px;margin:0 -11px;border-radius:8px;font-style:italic;color:#e7ebf3}
+.bar{background:#20242e;border-radius:0 0 14px 14px;padding:11px 18px;display:flex;align-items:center;gap:14px;
+  color:#c3cad8;font-size:13px;flex-wrap:wrap}
+.track{flex:1;min-width:120px;height:5px;background:#333a48;border-radius:99px;position:relative}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--brand);border-radius:99px;transition:width .3s}
+.play{background:var(--brand);color:#fff;border-radius:8px;padding:7px 14px;font-weight:600;font-size:13.5px}
+.play[disabled]{background:#39415a;color:#8b95ab;cursor:default}
+.noterow{display:flex;gap:8px;margin-top:10px}
+.noterow input{flex:1;border:1px solid var(--line);border-radius:8px;padding:8px 11px;font:inherit}
+.noterow input:focus{outline:2px solid var(--brand-soft);border-color:var(--brand)}
+.add{background:var(--brand);color:#fff;border-radius:8px;padding:8px 14px;font-weight:600;font-size:13.5px}
+/* ---- suggestion rail (critical interaction của phương án B) ---- */
+.railhead{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
+.pausebtn{margin-left:auto;border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:12.5px;background:#fff;color:var(--muted)}
+.pausebtn.on{background:var(--warn-soft);border-color:#f3d19b;color:var(--warn);font-weight:600}
+.sug{border:1px solid var(--line);border-radius:12px;padding:12px 13px;margin-bottom:10px;background:#fff}
+.sug.fresh{border-color:var(--brand);box-shadow:0 2px 12px rgba(47,107,255,.12)}
+.newtag{float:right;font-size:10.5px;font-weight:700;letter-spacing:.05em;color:var(--brand);
+  background:var(--brand-soft);border-radius:99px;padding:2px 8px}
+.sug.unsure{border-color:#f3d19b;background:var(--warn-soft)}
+.sug.done{opacity:.62}
+.sugsrc{font-size:11.5px;display:inline-block;padding:2px 8px;border-radius:99px;
+  background:var(--ok-soft);color:var(--ok);border:1px solid #b8e7d3;margin-bottom:7px}
+.sugsrc.q{background:#fff;color:var(--warn);border-color:#f3d19b}
+.sugwhy{font-size:12.5px;color:var(--muted);margin-top:6px}
+.sugflag{font-size:12.5px;color:var(--warn);margin-top:7px;font-weight:600}
+.sugbtns{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.b1{background:var(--brand);color:#fff;border-radius:7px;padding:6px 13px;font-size:13px;font-weight:600}
+.b1[disabled]{background:#e5e7eb;color:#9ca3af;cursor:default}
+.b2{border:1px solid var(--line);border-radius:7px;padding:6px 12px;font-size:13px;background:#fff}
+.b2:hover{background:#f3f4f6}
+.sug textarea{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;font:inherit;margin-top:8px;min-height:64px}
+.state{font-size:12.5px;font-weight:600;margin-top:8px}
+.state.ok{color:var(--ok)}
+.state.no{color:var(--muted)}
+.mark{border:1px solid var(--line);border-radius:10px;padding:9px 11px;margin-bottom:7px;background:#fbfcfd;font-size:14px}
+.mark .k{font-size:11.5px;color:var(--muted);display:flex;gap:6px;align-items:center;margin-bottom:3px}
+.mark .x{margin-left:auto;color:#9ca3af;font-size:16px;line-height:1}
+.mark .x:hover{color:#dc2626}
+.empty{border:1px dashed var(--line);border-radius:10px;padding:16px;text-align:center;color:var(--muted);font-size:13.5px}
+.cta{width:100%;background:var(--brand);color:#fff;border-radius:10px;padding:12px;font-weight:700;margin-top:12px}
+.cta[disabled]{background:#e5e7eb;color:#9ca3af;cursor:default}
+.limit{font-size:12.5px;color:var(--muted);margin-top:8px;text-align:center}
+.note{max-width:800px;margin:20px auto 60px;padding:0 20px}
+.notehead{border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:16px}
+.blk{border-left:3px solid var(--line);padding:2px 0 2px 14px;margin:0 0 16px}
+.blk h3{font-size:14px;margin:0 0 6px;color:var(--muted);font-weight:600}
+.blk li{margin:5px 0}
+.src{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:99px;
+  background:var(--ok-soft);color:var(--ok);margin-left:6px;border:1px solid #b8e7d3}
+.footnote{background:var(--warn-soft);border:1px solid #f3d19b;color:#7c4a06;
+  border-radius:10px;padding:12px 14px;font-size:13.5px;margin-top:22px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.ghost{border:1px solid var(--line);border-radius:8px;padding:9px 14px;background:#fff;font-size:13.5px}
+.ghost:hover{background:#f3f4f6}
+.primary{background:var(--brand);color:#fff;border-radius:8px;padding:9px 16px;font-weight:600;font-size:13.5px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:#15181e;color:#fff;
+  padding:10px 18px;border-radius:99px;font-size:13.5px;opacity:0;pointer-events:none;transition:opacity .25s;z-index:50}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">V<span>Learn</span></div>
+  <div class="lesson">Bài 4 — Vector Database &amp; RAG cơ bản</div>
+  <div class="badge">Phương án B</div>
+  <button class="tbtn" onclick="reset()">Bắt đầu lại</button>
+  <a class="tbtn" href="index.html" style="text-decoration:none">Tất cả phương án</a>
+</div>
+
+<div id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= SHARED FIXTURE (giống hệt ở A, B, C) ================= */
+const MOMENTS = [
+  { t:"12:40", slide:"Slide 5", title:"Embedding là gì?",
+    bullets:["Biểu diễn văn bản thành vector số","Khoảng cách vector ≈ khoảng cách ngữ nghĩa"],
+    say:"Chỗ này slide không ghi: embedding model lúc index và lúc query phải giống nhau. Khác model là kết quả ra rác — lỗi này rất hay gặp." },
+  { t:"18:05", slide:"Slide 6", title:"Chunking tài liệu",
+    bullets:["Cắt tài liệu thành đoạn nhỏ trước khi embed","Kích thước chunk ảnh hưởng chất lượng truy hồi"],
+    say:"Kinh nghiệm của mình là chunk 300–500 token, overlap khoảng 15%. Không có con số vàng đâu, phải thử theo tài liệu của các bạn." },
+  { t:"24:30", slide:"Slide 7", title:"Vì sao cần re-ranking",
+    bullets:["Top-k theo cosine chưa chắc đúng ý người hỏi","Re-ranker chấm lại thứ hạng kết quả"],
+    say:"Re-ranking đắt — mỗi query gọi thêm một model nữa. Nếu top-k nhỏ và tài liệu đồng nhất thì bỏ qua cũng được." }
+];
+const TOTAL = 32;
+const MIN = t => parseInt(t.split(":")[0],10) + parseInt(t.split(":")[1],10)/60;
+
+/* ================= CANNED AI SUGGESTIONS (chỉ có ở phương án B) ================= */
+const SUGGESTIONS = [
+  { id:0, m:0, src:"Slide 5 · 12:40",
+    text:"Embedding là biểu diễn văn bản thành vector số; khoảng cách vector xấp xỉ khoảng cách ngữ nghĩa.",
+    why:"Ý chính đã có sẵn trên Slide 5." },
+  { id:1, m:0, src:"Lời giảng 12:40",
+    text:"Embedding model lúc index và lúc query phải giống nhau. Khác model thì kết quả truy hồi ra rác.",
+    why:"Giảng viên nói thêm, không có trên slide." },
+  { id:2, m:1, src:"Lời giảng 18:05", unsure:true,
+    text:"Chunk khoảng 300–500 token, overlap ~15%. Không có con số cố định, phải thử theo tài liệu.",
+    why:"Con số cụ thể chỉ xuất hiện trong lời giảng.",
+    flag:"Đoạn này nghe không rõ — AI không chắc con số. Hãy nghe lại trước khi thêm." },
+  { id:3, m:2, src:"Lời giảng 24:30",
+    text:"Re-ranking tốn thêm một lần gọi model cho mỗi query; nếu top-k nhỏ và tài liệu đồng nhất thì có thể bỏ qua.",
+    why:"Đánh đổi chi phí, không có trên Slide 7." }
+];
+
+/* ================= STATE ================= */
+let idx=0, phase="lesson", paused=false;
+let status={}, drafts={}, replayed={}, editing=null, own=[];
+
+function reset(){ idx=0; phase="lesson"; paused=false; status={}; drafts={}; replayed={}; editing=null; own=[]; render(); }
+function toast(m){ const e=document.getElementById("toast"); e.textContent=m; e.classList.add("on");
+  clearTimeout(window._tt); window._tt=setTimeout(()=>e.classList.remove("on"),1800); }
+function esc(s){ return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+const txt = s => drafts[s.id] !== undefined ? drafts[s.id] : s.text;
+
+function visible(){ return SUGGESTIONS.filter(s => s.m <= (paused ? pauseAt : idx)); }
+let pauseAt = 0;
+function togglePause(){ if(!paused){ paused=true; pauseAt=idx; } else { paused=false; } render(); }
+
+function act(id,what){
+  if(what==="edit"){ editing=id; render(); return; }
+  if(what==="saveEdit"){
+    const v=document.getElementById("ta"+id).value.trim();
+    if(v) drafts[id]=v;
+    editing=null; status[id]="added"; render(); toast("Đã thêm vào ghi chú của bạn."); return;
+  }
+  if(what==="replay"){ replayed[id]=true; render(); toast("Đang nghe lại 18:05…"); return; }
+  status[id]=what;
+  render();
+  if(what==="added") toast("Đã thêm vào ghi chú của bạn.");
+}
+function undo(id){ status[id]=null; render(); toast("Đã hoàn tác."); }
+function addOwn(){ const el=document.getElementById("ni"); const v=(el.value||"").trim(); if(!v) return;
+  own.push({text:v,src:"Bạn viết lúc "+MOMENTS[Math.min(idx,2)].t,m:Math.min(idx,2)}); render(); }
+function delOwn(i){ own.splice(i,1); render(); }
+
+/* ================= RENDER ================= */
+function render(){
+  document.getElementById("app").innerHTML = phase==="lesson" ? lessonView() : noteView();
+  const ni=document.getElementById("ni"); if(ni) ni.addEventListener("keydown",e=>{ if(e.key==="Enter") addOwn(); });
+}
+
+function sugCard(s){
+  const st=status[s.id];
+  const blocked = s.unsure && !replayed[s.id];
+  if(editing===s.id){
+    return `<div class="sug ${s.unsure?"unsure":""}">
+      <div class="sugsrc ${s.unsure?"q":""}">${s.src}</div>
+      <textarea id="ta${s.id}">${esc(txt(s))}</textarea>
+      <div class="sugbtns">
+        <button class="b1" onclick="act(${s.id},'saveEdit')">Lưu &amp; thêm</button>
+        <button class="b2" onclick="editing=null;render()">Hủy</button>
+      </div></div>`;
+  }
+  if(st==="added" || st==="skipped"){
+    return `<div class="sug done ${s.unsure?"unsure":""}">
+      <div class="sugsrc ${s.unsure?"q":""}">${s.src}</div>
+      <div>${esc(txt(s))}</div>
+      <div class="state ${st==="added"?"ok":"no"}">${st==="added"?"✓ Đã thêm vào ghi chú":"— Đã bỏ qua"}
+        <button class="b2" style="padding:2px 9px;margin-left:8px" onclick="undo(${s.id})">Hoàn tác</button></div>
+    </div>`;
+  }
+  const fresh = s.m === Math.min(idx, MOMENTS.length-1) && idx < MOMENTS.length;
+  return `<div class="sug ${s.unsure?"unsure":""} ${fresh?"fresh":""}">
+    ${fresh?`<span class="newtag">MỚI</span>`:""}
+    <div class="sugsrc ${s.unsure?"q":""}">${s.src}</div>
+    <div>${esc(txt(s))}</div>
+    <div class="sugwhy">Vì sao gợi ý: ${esc(s.why)}</div>
+    ${s.flag?`<div class="sugflag">⚠ ${esc(s.flag)}</div>`:""}
+    <div class="sugbtns">
+      ${blocked
+        ? `<button class="b1" disabled>Thêm</button><button class="b2" onclick="act(${s.id},'replay')">🔊 Nghe lại 18:05</button>`
+        : `<button class="b1" onclick="act(${s.id},'added')">Thêm</button>`}
+      <button class="b2" onclick="act(${s.id},'edit')">Sửa rồi thêm</button>
+      <button class="b2" onclick="act(${s.id},'skipped')">Bỏ qua</button>
+    </div></div>`;
+}
+
+function lessonView(){
+  const ended = idx >= MOMENTS.length;
+  const m = MOMENTS[Math.min(idx,MOMENTS.length-1)];
+  const now = ended ? TOTAL : MIN(m.t);
+  const pct = Math.round(now/TOTAL*100);
+  const shown = visible();
+  const queued = SUGGESTIONS.filter(s=>s.m<=idx).length - shown.length;
+  const added = SUGGESTIONS.filter(s=>status[s.id]==="added");
+  const pending = shown.filter(s=>!status[s.id]);
+
+  const stage = ended ? `
+    <div class="stage" style="text-align:center;padding:56px 24px">
+      <div style="font-size:30px;margin-bottom:8px">🎓</div>
+      <div style="font-size:19px;font-weight:700">Bài học đã kết thúc</div>
+      <div style="color:#9aa4b8;font-size:13.5px;margin-top:6px">Bài 4 · 32 phút · 3 slide đã xem</div>
+    </div>`
+  : `
+    <div class="stage">
+      <div class="slidechip">${m.slide}</div>
+      <div class="slidetitle">${esc(m.title)}</div>
+      ${m.bullets.map(b=>`<div class="bul"><span class="dot">▪</span><span>${esc(b)}</span></div>`).join("")}
+      <div class="say">
+        <div class="saylabel">GIẢNG VIÊN ĐANG NÓI — không có trên slide</div>
+        <div class="saytext">“${esc(m.say)}”</div>
+      </div>
+    </div>`;
+
+  const left2 = ended
+    ? `<h2>Bài học kết thúc</h2><p class="hint">Sang cột bên phải để xử lý nốt gợi ý còn lại và xem ghi chú.</p>`
+    : `<h2>Ghi chú của bạn</h2>
+       <p class="hint">AI đang gợi ý ở cột bên phải. Bạn cũng có thể tự viết thêm.</p>
+       <div class="noterow">
+         <input id="ni" placeholder="Tự viết ghi chú tại ${m.t}…">
+         <button class="add" onclick="addOwn()">Thêm</button>
+       </div>
+       ${own.length?own.map((o,i)=>`<div class="mark" style="margin-top:8px">
+          <div class="k"><span>✍️ Bạn tự viết</span><span>·</span><span>${o.src}</span>
+          <button class="x" onclick="delOwn(${i})">×</button></div>${esc(o.text)}</div>`).join(""):""}`;
+
+  const panel = `
+    <div class="card pad">
+      <div class="railhead">
+        <h2>Gợi ý từ AI</h2>
+        <button class="pausebtn ${paused?"on":""}" onclick="togglePause()">${paused?"▶ Bật lại gợi ý":"⏸ Tạm dừng gợi ý"}</button>
+      </div>
+      <p class="hint" style="margin-bottom:12px">Chưa có gợi ý nào được thêm vào ghi chú của bạn. Bạn quyết định từng cái.</p>
+      ${paused&&queued>0?`<div class="empty" style="margin-bottom:10px">⏸ Đang tạm dừng — ${queued} gợi ý đang chờ.</div>`:""}
+      ${shown.length? shown.map(sugCard).join("") : `<div class="empty">Chưa có gợi ý nào.<br>Bấm “Tiếp tục bài giảng” để học tiếp.</div>`}
+      <button class="cta" ${(added.length||own.length)?"":"disabled"} onclick="phase='note';render()">
+        Xem ghi chú (${added.length+own.length} mục)
+      </button>
+      ${pending.length?`<div class="limit">Còn ${pending.length} gợi ý chưa xử lý.</div>`
+        :`<div class="limit">AI không tự thêm gì — chỉ những mục bạn bấm “Thêm” mới vào ghi chú.</div>`}
+    </div>`;
+
+  return `<div class="wrap">
+    <div>
+      <div class="card" style="overflow:hidden">
+        ${stage}
+        <div class="bar">
+          <button class="play" ${ended?"disabled":""} onclick="idx++;if(!paused)pauseAt=idx;render()">
+            ${ended?"Đã hết bài":"▶ Tiếp tục bài giảng"}
+          </button>
+          <span>${ended?"32:00":m.t}</span>
+          <div class="track"><div class="fill" style="width:${pct}%"></div></div>
+          <span>32:00</span>
+        </div>
+      </div>
+      <div class="card pad" style="margin-top:14px">${left2}</div>
+    </div>
+    ${panel}
+  </div>`;
+}
+
+function noteView(){
+  const items = MOMENTS.map((m,i)=>({ m,
+    list:[ ...SUGGESTIONS.filter(s=>s.m===i&&status[s.id]==="added").map(s=>({text:txt(s),src:s.src,ai:true})),
+           ...own.filter(o=>o.m===i).map(o=>({text:o.text,src:o.src,ai:false})) ]
+  })).filter(g=>g.list.length);
+  const skipped = SUGGESTIONS.filter(s=>status[s.id]==="skipped");
+  const untouched = SUGGESTIONS.filter(s=>!status[s.id]);
+  const left = skipped.length+untouched.length;
+  return `<div class="note">
+    <div class="notehead">
+      <h1 style="font-size:22px;margin:0 0 4px">Ghi chú — Bài 4 · Vector Database &amp; RAG cơ bản</h1>
+      <p class="hint">Gồm các gợi ý <b>bạn đã duyệt</b> và phần bạn tự viết · AI không tự thêm mục nào</p>
+    </div>
+    ${items.map(g=>`
+      <div class="blk">
+        <h3>${g.m.t} — ${esc(g.m.title)}</h3>
+        <ul style="margin:0;padding-left:18px">
+          ${g.list.map(x=>`<li>${esc(x.text)}<span class="src">${x.src}</span></li>`).join("")}
+        </ul>
+      </div>`).join("")}
+    ${left?`<div class="footnote"><b>Bạn đã bỏ qua / chưa xử lý ${left} gợi ý.</b><br>
+      ${[...skipped,...untouched].map(s=>"• "+esc(s.src)+": "+esc(s.text)).join("<br>")}
+      <br><br>Quay lại bài học nếu muốn thêm.</div>`:""}
+    <div class="actions">
+      <button class="primary" onclick="toast('Đã lưu ghi chú.')">Lưu ghi chú</button>
+      <button class="ghost" onclick="phase='lesson';render()">← Về bài học</button>
+      <button class="ghost" onclick="status={};drafts={};own=[];phase='lesson';idx=0;render();toast('Đã xóa hết.')">Xóa hết và tự viết</button>
+      <button class="ghost" onclick="reset()">Bắt đầu lại</button>
+    </div>
+  </div>`;
+}
+
+render();
+</script>
+</body>
+</html>
