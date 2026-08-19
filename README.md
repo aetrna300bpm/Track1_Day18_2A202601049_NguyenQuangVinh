@@ -9,12 +9,22 @@
 * **Họ và tên:** Nguyễn Quang Vinh
 * **Tên nhóm:** Nhóm 2 — Track 1 VLearn AI Product Building
 * **Thành viên nhóm:**
-  1. Trần Thị Vân Anh (MHV `2A202601411`) — Case B Lead
-  2. Nguyễn Quang Vinh (MHV `2A202601049`) — Member
+  1. Trần Thị Vân Anh (MHV `2A202601411`)
+  2. Nguyễn Quang Vinh (MHV `2A202601049`)
 * **Case:** **Case B — AI Notes: Personal Learning Notes** *(tiếp tục đúng case của Day 17, không đổi case)*
 * **Đầu vào từ Day 17:** [Track1_Day17_2A202601049_NguyenQuangVinh](https://github.com/aetrna300bpm/Track1_Day17_2A202601049_NguyenQuangVinh)
 
-> **Ghi chú về quy mô nhóm.** Bài lab thiết kế cho nhóm 3 người (3 option, 3 tester, 3 Practice Notes). Nhóm 2 có **2 người**. Nhóm giữ nguyên **3 Solution Options** và **3 Feedback Notes** để không hạ chuẩn Gate 2 và Gate 5, bằng cách một thành viên phụ trách 2 option và 2 phiên test. Riêng Practice Notes, nhóm giữ đúng con số thật là **2** thay vì bịa thêm note thứ ba.
+> ### ⚠️ Nhóm 2 người — khai báo trước những chỗ thiếu so với chuẩn
+>
+> Bài lab thiết kế cho nhóm **3 người**. Nhóm 2 có **2 người**. Nhóm chọn khai báo thẳng thay vì bù cho đủ số:
+>
+> | | Chuẩn của lab | Nhóm 2 | Xử lý |
+> | :--- | :--- | :--- | :--- |
+> | Solution Options | 3 | **3** ✅ | Giữ đủ để Gate 2 không bị hạ chuẩn |
+> | Practice Notes (Day 17) | 3 | **2** | Nhóm chỉ phỏng vấn 2 người. Giữ con số thật |
+> | Feedback Notes (Day 18) | 3 | **2** | Mỗi thành viên facilitate 1 phiên với 1 tester ngoài nhóm |
+>
+> Ảnh hưởng cụ thể của việc thiếu phiên thứ ba được nêu ở [`group-feedback-synthesis.md` §4](group-feedback-synthesis.md#4-hạn-chế-của-chính-đợt-test-này), không giấu đi.
 
 ---
 
@@ -31,12 +41,14 @@
 | **NV-02** *(Vinh phỏng vấn)* | *"Mình thường nốt ra những cái keyword chính, xong rồi lấy slide cho con AI nó đọc, rồi pass những cái keyword vào cho AI đọc và tóm tắt lại cho mình."* |
 | **Cross-validation** | Hai người **không quen nhau**, phỏng vấn độc lập, **cùng tự dựng một workaround**: nội dung bài học + note của mình → AI ngoài → bản tóm tắt. |
 
-**Điều vẫn chưa được chứng minh**
+**Điều chưa được chứng minh — và trạng thái sau khi test Day 18**
 
-1. Học viên chấp nhận bỏ **bao nhiêu thao tác trong lúc đang nghe giảng** — cả hai bằng chứng đều là hành vi *sau* buổi học.
-2. Học viên **có tin và dùng lại** ghi chú do AI tự viết mà mình không tự tay đánh dấu hay không.
-3. "Đủ" của một bản ghi chú là gì: danh sách keyword, hay bản tóm tắt đầy đủ.
-4. Hai practice interview **không phải validation** — pain mới ở mức *plausible*.
+| # | Điều chưa chứng minh (chốt ở Chặng 1) | Sau 2 phiên test |
+| :-- | :--- | :--- |
+| 1 | Học viên chịu bỏ bao nhiêu thao tác trong lúc nghe giảng | 🔽 Họ muốn thao tác ít nhất có thể, để giữ được mạch nghe giảng |
+| 2 | Có tin & dùng lại ghi chú AI tự viết mà mình không đánh dấu | 🔽 Cả hai đều không tin và không thấy hữu ích |
+| 3 | "Đủ" của một bản ghi chú là keyword hay tóm tắt đầy đủ | 🔽 **Đảo hướng giả định của nhóm** — ghi chú không phải bản tóm tắt |
+| 4 | 2 practice interview chưa phải validation | ⏸️ Vẫn nguyên |
 
 Chi tiết: [`three-option-design-sheet.md`](three-option-design-sheet.md)
 
@@ -52,10 +64,10 @@ Ba option cùng user, cùng situation, cùng task, cùng desired outcome và cù
 | **Trong lúc học** | User highlight / bấm "Chưa hiểu" / gõ note. **AI không làm gì** | AI đẩy 4 thẻ gợi ý kèm nguồn và lý do; user Thêm / Sửa / Bỏ qua | User **không phải làm gì** |
 | **Cuối bài** | User bấm *Tạo ghi chú từ N dấu* | Ghi chú = các thẻ đã duyệt + phần user tự viết | Bản nháp 7 khối có 3 mức độ chắc chắn; user Giữ / Sửa / Bỏ rồi mới Lưu |
 | **AI agency** | **Don't Act** → Act hẹp khi được gọi | **Ask** tại từng mốc | **Act** (sinh nháp) nhưng **không commit** |
-| **Trade-off** | Không ghi thừa — nhưng quên đánh dấu là mất luôn | Không bỏ sót — nhưng cắt luồng học | Tốn 0 thao tác — nhưng AI quyết định hộ, và user dễ "gật bừa" |
+| **Trade-off** | Không ghi thừa — nhưng quên đánh dấu là mất luôn | Không bỏ sót — nhưng cắt luồng học | Tốn 0 thao tác — nhưng AI quyết định hộ |
 | **Prototype** | [`prototype/option-a.html`](prototype/option-a.html) | [`prototype/option-b.html`](prototype/option-b.html) | [`prototype/option-c.html`](prototype/option-c.html) |
 
-**Hub cho tester (bắt đầu ở đây):** [https://chipper-basbousa-bccf28.netlify.app/prototype/](https://chipper-basbousa-bccf28.netlify.app/prototype/) (Offline: [`prototype/index.html`](prototype/index.html)) — xem danh sách link trong [`prototype-link.md`](prototype-link.md)
+**Hub cho tester (bắt đầu ở đây):** [`prototype/index.html`](prototype/index.html) — link đầy đủ trong [`prototype-link.md`](prototype-link.md)
 
 **Distance check**
 
@@ -63,7 +75,27 @@ Ba option cùng user, cùng situation, cùng task, cùng desired outcome và cù
 * **B khác C vì** B chia quyết định thành nhiều lượt nhỏ trong lúc học và không viết gì nếu user không duyệt; C dồn toàn bộ quyết định vào **một lần review bản nháp đã viết sẵn** sau bài học.
 * **A khác C vì** A không suy diễn ngoài vùng user đánh dấu; C tự chọn nội dung nào quan trọng cho cả bài — nên hậu quả khi AI sai ở C lớn hơn hẳn.
 
-Human–AI Decision Table đầy đủ (expectation · role & agency · evidence & uncertainty · control & recovery): [`three-option-design-sheet.md`](three-option-design-sheet.md#chặng-3--humanai-decision-table)
+Human–AI Decision Table đầy đủ: [`three-option-design-sheet.md` §3](three-option-design-sheet.md#chặng-3--humanai-decision-table)
+
+### ✨ Phương án D — bản gộp A+B, dựng sau khi test
+
+Đây là **Next Change đã được dựng thành prototype**, không phải option thứ tư mang đi so sánh. Nó ra đời **sau** và **nhờ** hai phiên test.
+
+```
+BÔI ĐEN (trong lúc học)  →  AI IM LẶNG  →  CUỐI BÀI: USER GỌI  →  AI MỞ RỘNG (tách riêng)
+```
+
+| Quyết định | Đến từ bằng chứng nào |
+| :--- | :--- |
+| Đánh dấu bằng **bôi đen**, không phải bấm-vào-dòng | `T1` không phát hiện ra chữ trong slide bấm được; `T1` tự đề xuất bôi đen |
+| AI **im lặng hoàn toàn** trong lúc học | `T1`: *"cúi xuống đọc cái ngẩng lên là không hiểu gì rồi"* — chi phí thật là mất mạch nghe giảng |
+| AI chỉ **mở rộng đoạn đã đánh dấu**, và chỉ khi được bấm | `T1` và `T2` độc lập cùng muốn AI ở vai trò *làm rõ cái tôi đã chọn*, không phải *chọn hộ* |
+| Phần AI nằm **thu gọn dưới** chữ của user, có nhãn *"không phải chữ của bạn"* | Cả hai chọn A vì tự chủ; `T1`: *"ghi chú nhằm personalize"* |
+| Recovery là **bỏ**, không phải **sửa** | Ở B và C không ai dùng nút *Sửa* — họ thà tự gõ lại |
+
+**Prototype:** [`prototype-v2/index.html`](prototype-v2/index.html) · Thiết kế đầy đủ: [`three-option-design-sheet.md` §6](three-option-design-sheet.md#chặng-6--sau-khi-test--phương-án-d)
+
+> Phương án D **chưa được test với ai**. Giả thuyết trung tâm của nó — *bôi đen dễ khám phá hơn bấm-vào-dòng* — vẫn chưa có bằng chứng.
 
 ---
 
@@ -74,47 +106,75 @@ Human–AI Decision Table đầy đủ (expectation · role & agency · evidence
 | Hạng mục | Phần tôi làm |
 | :--- | :--- |
 | **Option chịu trách nhiệm chính** | **Option A — Marker-first** và **Option C — Auto recap** *(nhóm 2 người: tôi nhận 2 option, Vân Anh nhận Option B)* |
-| **Shared context / content** | Dựng content fixture dùng chung cho cả ba option: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm tại `12:40` / `18:05` / `24:30`; khóa Comparison Contract để ba option so sánh được |
-| **Shared visual components** | Header, player mock, panel phải, bảng màu, chip nguồn và reset path (`Bắt đầu lại` / `Tất cả phương án`) dùng chung cho A/B/C |
+| **Shared context / content** | Dựng content fixture dùng chung cho cả bộ: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm tại `12:40` / `18:05` / `24:30`; khoá Comparison Contract để ba option so sánh được |
+| **Shared visual components** | Header, player mock, panel phải, bảng màu, chip nguồn và reset path dùng chung cho A/B/C/D |
 | **Human–AI decisions** | Đề xuất trục agency `Don't Act → Ask → Act-không-commit` và ánh xạ nó theo chi phí khi AI sai; viết Human–AI Decision Table cho cả ba option |
 | **Evidence** | Là interviewer của **NV-02** ở Day 17; đưa quote NV-02 vào Evidence Snapshot và tách rõ cột "user nói" với cột "nhóm diễn giải" |
-| **Chuẩn bị test** | Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation, bảng counterbalance thứ tự A/B/C ([`test-script.md`](test-script.md)) |
-| **Facilitation** | Facilitate **phiên 1 (Tester 1)** và **phiên 3 (Tester 3)**; Vân Anh facilitate phiên 2 |
-| **Tổng hợp** | Chủ trì Group Feedback Synthesis sau khi có đủ ba Feedback Notes |
+| **Chuẩn bị test** | Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation, bảng đảo thứ tự A/B/C ([`test-script.md`](test-script.md)) |
+| **Facilitation** | Facilitate **phiên 1** với `T1` — [`prototype-feedback-note.md`](prototype-feedback-note.md) |
+| **Tổng hợp** | Chủ trì Group Feedback Synthesis và chốt Next Change |
+| **Phương án D** | Dựng bản gộp A+B từ Next Change: cơ chế bôi đen, AI im lặng trong lúc học, mở rộng theo yêu cầu ([`prototype-v2/`](prototype-v2/index.html)) |
 
-**Trần Thị Vân Anh — MHV `2A202601411`:** Option B — Live suggestion rail; interviewer của NV-01 ở Day 17; facilitate phiên 2 (Tester 2).
+**Trần Thị Vân Anh — MHV `2A202601411`**
+
+| Hạng mục | Phần Vân Anh làm |
+| :--- | :--- |
+| **Option chịu trách nhiệm chính** | **Option B — Live suggestion rail** |
+| **Evidence** | Là interviewer của **NV-01** ở Day 17 |
+| **Deploy** | Deploy prototype lên môi trường truy cập được để tester bên ngoài vào test |
+| **Facilitation** | Facilitate **phiên 2** với `T2` — [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md) |
 
 ---
 
 ## 🧪 5. Prototype Feedback
 
-> ⏳ **Chưa hoàn tất tại thời điểm nộp bản chuẩn bị.** Ba phiên test sẽ chạy trong 20 phút cuối buổi lab hoặc ngoài giờ trước deadline (theo Chặng 6 / mục "Sau lớp" của đề bài). Các file dưới đây đã có cấu trúc sẵn và **chỉ được điền bằng quan sát thật**.
+**Hai phiên, hai tester ngoài nhóm, hai thứ tự chạy ngược nhau.** Cả hai tester đều có relevant context (đang học online và tự ghi chú: một người dùng Notepad, một người viết ra vở).
 
-| | Nội dung | File |
-| :--- | :--- | :--- |
-| **Phiên tôi facilitate** | Observation của Tester 1 — first action, chỗ do dự, evidence đọc/bỏ qua, cách lấy lại control, option chọn + trade-off | [`prototype-feedback-note.md`](prototype-feedback-note.md) |
-| **Tổng hợp ba phiên** | Bảng 3 feedback → pattern/khác biệt → **Next Change** → **Still Unproven** | [`group-feedback-synthesis.md`](group-feedback-synthesis.md) |
-| **Kịch bản chạy** | Test Prompt, Observation Focus, luật facilitation, counterbalance | [`test-script.md`](test-script.md) |
+| Phiên | Facilitator | Tester | Thứ tự | Note |
+| :--- | :--- | :--- | :--- | :--- |
+| F1 | Nguyễn Quang Vinh | `T1` | A → B → C | [`prototype-feedback-note.md`](prototype-feedback-note.md) |
+| F2 | Trần Thị Vân Anh | `T2` | B → C → A | [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md) |
 
-**Điều nhóm dự kiến quan sát** *(kỳ vọng, chưa phải kết quả — dùng để đối chiếu sau khi test)*
+### Bốn pattern trùng nhau ở cả hai phiên
 
-* Ở **A**: tester có phát hiện mình bỏ sót đúng đoạn `18:05` sau khi ghi chú đã tạo xong không.
-* Ở **B**: tester có đọc dòng *"Vì sao gợi ý"* trước khi bấm Thêm không, và có tìm ra nút **Tạm dừng gợi ý** không.
-* Ở **C**: tester có bấm vào chip vàng *"AI suy ra — hãy kiểm tra"* không, hay bấm Lưu thẳng.
+1. **Cả hai chọn Option A**, ở hai thứ tự chạy ngược nhau — nên không phải hiệu ứng thứ tự.
+2. **Affordance đánh dấu của A vô hình.** `T1`: *"Em không biết là bấm được vào chữ trong slide để ghi note đấy."* `T2`: khó hiểu tương tác đánh dấu.
+3. **Cơ chế duyệt-từng-thẻ của B bị hiểu ngược bởi cả hai người** — họ tưởng thẻ đã tự nằm trong ghi chú. Và chi phí thật không phải số lần bấm: `T1` — *"cúi xuống đọc cái ngẩng lên là không hiểu gì rồi."*
+4. **C bị bác ở mức khái niệm, không phải mức giao diện.** `T1`: *"chẳng liên quan gì đến ghi chú, out of scope… ghi chú nhằm personalize còn cái này thì viết hết hộ."* `T2`: *"note cái gì vậy, cho vào AI tóm tắt cho nhanh."*
 
-**Câu nhóm sẽ được phép kết luận:** *"Với Hypothesis Problem này, chúng tôi đã thử ba cách giải. Tester đã ……, vì vậy iteration tiếp theo chúng tôi sẽ ……"*
-**Câu nhóm sẽ không kết luận:** *"User đã xác nhận solution này đúng."*
+Phát hiện số 4 phủ định một giả định nằm dưới cả ba option: nhóm coi **ghi chú = bản tóm tắt bài học**. Với cả hai tester, **ghi chú = ghi lại thứ mình thấy quan trọng hoặc chưa hiểu, để review sau**.
+
+### Next Change
+
+> Ghép Option A và Option B: giữ *người dùng tự đánh dấu* làm cơ chế chính, đổi thao tác sang **bôi đen**, và để **AI mở rộng đúng những đoạn đã đánh dấu — chỉ khi người dùng bấm yêu cầu, ở cuối bài**. Bỏ cơ chế AI tự chọn nội dung của Option C.
+
+Đã dựng thành [`prototype-v2/`](prototype-v2/index.html).
+
+### Still Unproven
+
+* Điều gì làm việc ghi chú hữu ích **với số đông** — hai tester có hai phong cách ghi chú khác nhau.
+* **Bôi đen có dễ khám phá hơn bấm-vào-dòng hay không — chưa test.**
+* **Toàn bộ phần thiết kế evidence & uncertainty chưa được kiểm chứng.** Không phiên nào đo được tester có đọc chip nguồn hay badge *"AI suy ra"* không — đây là lỗi thiết kế phương pháp của nhóm.
+* **Thiếu phiên thứ ba.** Mọi "pattern" ở trên thực chất là "hai trên hai".
+* Facilitator phiên 1 tự nhận **có mớm lời** cho tester lúc họ đang im lặng suy nghĩ.
+
+**Câu nhóm kết luận:** *"Với Hypothesis Problem này, chúng tôi đã thử ba cách giải. Hai tester ngoài nhóm, chạy ở hai thứ tự khác nhau, đều chọn cách giải do người dùng tự đánh dấu và đều bác cách giải AI tự viết bản nháp ở mức khái niệm. Vì vậy iteration tiếp theo chúng tôi giữ cơ chế đánh dấu của A, đổi thao tác sang bôi đen, và chuyển AI từ vai trò chọn-nội-dung sang vai trò mở-rộng-theo-yêu-cầu."*
+
+**Câu nhóm không kết luận:** ~~*"User đã xác nhận solution này đúng."*~~
+
+Tổng hợp đầy đủ: [`group-feedback-synthesis.md`](group-feedback-synthesis.md)
 
 ---
 
 ## 🤖 6. AI Support Log
 
-Tóm tắt — bản đầy đủ ở [`ai-support-log.md`](ai-support-log.md):
+Bản đầy đủ: [`ai-support-log.md`](ai-support-log.md)
 
-* **Công việc của con người (100% người thực hiện):** Nghiên cứu tài liệu lab, tổng hợp quote phỏng vấn Day 17, xây dựng bài toán Hypothesis Problem, lập Solution Parking Lot, biên soạn Comparison Contract & Distance Check, xây dựng Human–AI Decision Table, trực tiếp viết toàn bộ các tài liệu (docs) thiết kế (`README.md`, `three-option-design-sheet.md`), và biên soạn kịch bản kiểm thử (`test-script.md`).
-* **Phạm vi AI hỗ trợ (Phụ trợ kỹ thuật):** Hỗ trợ viết khung code HTML/CSS/JS thuần cho 3 file prototype, sinh văn bản giả lập mẫu (*canned output*) cho bài học/gợi ý, và rà soát kiểm thử kỹ thuật giao diện bằng Playwright.
-* **AI sai / hời hợt ở đâu:** Đề xuất 3 option nghiêng về khác biệt màn hình thay vì cơ chế; mặc định nhóm 3 người; sinh bản nháp Option C "hoàn hảo" không có lỗi.
-* **Đã tự sửa thế nào:** Nhóm bác bỏ đề xuất của AI, tự chốt thiết kế theo trục agency `Act / Ask / Don't Act`, chủ động cài 1 khối dữ liệu suy diễn quá đà để test Human control, và tự thực hiện toàn bộ phiên kiểm thử người dùng thực tế.
+* **AI đã giúp:** đọc và tổng hợp tài liệu lab + repo Day 17; soạn nháp Hypothesis Problem, Parking Lot, Comparison Contract và Human–AI Decision Table; viết toàn bộ code bốn prototype HTML tự chứa; tạo content fixture và canned output; soạn Test Prompt và sheet ghi chép; biên tập field notes viết tay thành Feedback Note có cấu trúc; chạy Playwright kiểm thử.
+* **AI sai / hời hợt ở đâu:** **làm hộ luôn phần brainstorm** — đưa ra trọn bộ ba ý tưởng prototype thay vì để nhóm tự nghĩ, trong khi mục tiêu của bài là rèn brainstorm; mặc định cấu trúc nhóm 3 người; giả định Day 17 đã có Parking Lot; bản nháp đầu ba option nghiêng về khác **màn hình** thay vì khác **cơ chế**; Option C ban đầu không có chỗ nào cho tester phát hiện AI sai; và **hai bug thật trong code AI viết** — biến `open` / `status` trùng tên với `document.open` / `window.status` làm nút *Thu gọn* và *Xoá hết* im lặng không hoạt động.
+* **Tôi tự sửa gì:** hỏi off-script trong lúc phỏng vấn thay vì bám bộ câu hỏi soạn sẵn — chính từ đó mới ra đề xuất ghép A và B; chốt lại cách chia việc cho nhóm 2 người; ép thiết kế lại theo trục `Act / Ask / Don't Act` trước khi vẽ màn hình.
+* **Điều tôi và AI cùng đoán sai:** ghi chú **không** nhằm tóm tắt đầy đủ nội dung buổi học. Với nhiều người, ghi chú là ghi lại những gì quan trọng / khó hiểu / đặc biệt. Cả ba option đều dựng trên giả định sai này.
+* **Ranh giới AI không được vượt:** mọi observation và quote trong repo **chỉ đến từ hai phiên test thật**. Chỗ facilitator không quan sát được thì ghi là *không quan sát được* — không suy đoán ngược từ hành vi.
 
 ---
 
@@ -122,18 +182,21 @@ Tóm tắt — bản đầy đủ ở [`ai-support-log.md`](ai-support-log.md):
 
 ```
 Track1_Day18_2A202601049_NguyenQuangVinh/
-├── README.md                       # File này
-├── three-option-design-sheet.md    # Chặng 1–4: evidence, hypothesis, A/B/C, Human–AI table, annotation
-├── prototype-link.md               # Link A/B/C chung của nhóm + hướng dẫn chạy
-├── test-script.md                  # Chặng 5: Test Prompt + Observation Focus + facilitation
-├── prototype-feedback-note.md      # Chặng 6: phiên do chính tôi facilitate  ⏳ chờ điền
-├── group-feedback-synthesis.md     # Chặng 6: tổng hợp 3 feedback            ⏳ chờ điền
-├── ai-support-log.md               # Khai báo dùng AI
-└── prototype/
-    ├── index.html                  # Hub — tester bắt đầu ở đây
-    ├── option-a.html
-    ├── option-b.html
-    └── option-c.html
+├── README.md                            # File này
+├── three-option-design-sheet.md         # Chặng 1–4 + §6 thiết kế Phương án D
+├── prototype-link.md                    # Link A/B/C và Phương án D
+├── test-script.md                       # Chặng 5: Test Prompt + Observation Focus
+├── prototype-feedback-note.md           # Phiên 1 — Vinh facilitate, tester T1
+├── prototype-feedback-note-vananh.md    # Phiên 2 — Vân Anh facilitate, tester T2
+├── group-feedback-synthesis.md          # Tổng hợp 2 phiên + Next Change + Still Unproven
+├── ai-support-log.md                    # Khai báo dùng AI + reflection cá nhân
+├── prototype/                           # BẢN ĐÃ TEST — không sửa sau feedback
+│   ├── index.html                       # Hub — tester bắt đầu ở đây
+│   ├── option-a.html
+│   ├── option-b.html
+│   └── option-c.html
+└── prototype-v2/                        # Next Change — chưa test
+    └── index.html                       # Phương án D — bản gộp A+B
 ```
 
 ---
@@ -142,8 +205,8 @@ Track1_Day18_2A202601049_NguyenQuangVinh/
 
 | Gate | Trạng thái | Ở đâu |
 | :--- | :--- | :--- |
-| **1 — Evidence Continuity** | ✅ | Hypothesis Problem đủ 5 thành phần, nối tới quote NV-01/NV-02, có 4 điều chưa chứng minh — mục 2 và Design Sheet §1 |
-| **2 — Meaningful Options** | ✅ | Comparison Contract khóa user/situation/task/outcome/content; khác biệt ở cơ chế và phân quyền user–AI — Design Sheet §2 |
-| **3 — Human Control** | ✅ | Human–AI Decision Table đủ 5 hàng cho A/B/C; agency tăng theo chi phí khi sai; mỗi option ≥2 đường recovery thao tác được — Design Sheet §3 |
-| **4 — Test-ready** | ✅ | Hub + 3 prototype chạy offline, không cần facilitator giải thích, có reset path — đã kiểm thử tự động cả ba luồng |
-| **5 — Learning, not Praise** | ⏳ | Cần ba phiên test thật. Template đã sẵn sàng ở `prototype-feedback-note.md` và `group-feedback-synthesis.md` |
+| **1 — Evidence Continuity** | ✅ | Hypothesis Problem đủ 5 thành phần, nối tới quote NV-01/NV-02, có 4 điều chưa chứng minh và trạng thái sau test — mục 2 |
+| **2 — Meaningful Options** | ✅ | Comparison Contract khoá user/situation/task/outcome/content; khác biệt ở cơ chế và phân quyền user–AI; màn hình bối cảnh giống hệt nhau ở cả ba — Design Sheet §2 |
+| **3 — Human Control** | ✅ thiết kế · ⚠️ chưa kiểm chứng | Human–AI Decision Table đủ 5 hàng cho A/B/C/D; mỗi option ≥2 đường recovery thao tác được. **Nhưng hai phiên test không đo được hành vi đọc evidence** — nhóm ghi rõ thay vì tuyên bố đã chứng minh |
+| **4 — Test-ready** | ✅ | Hai tester ngoài nhóm tự chạy hết A/B/C. Facilitator phiên 1 và phiên 2 đều xác nhận **không phải giải thích hộ** |
+| **5 — Learning, not Praise** | ⚠️ **2 Feedback Notes, không phải 3** | Có pattern và khác biệt giữa hai người, một Next Change đã dựng thành prototype, và Still Unproven nêu rõ. Nhóm **không** tuyên bố solution đã validated. Thiếu phiên thứ ba được khai báo ở mục 1 và `group-feedback-synthesis.md` §4 |

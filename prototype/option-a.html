@@ -144,6 +144,9 @@ function addNote(){
   render();
 }
 function delMark(k){ marks.splice(k,1); render(); }
+function goNote(){ phase="note"; render(); }
+function backToLesson(){ phase="lesson"; idx=0; render(); }
+function wipeAll(){ marks=[]; phase="lesson"; idx=0; render(); toast("Đã xóa hết dấu."); }
 
 /* ================= RENDER ================= */
 function render(){
@@ -206,7 +209,7 @@ function lessonView(){
           <div>${esc(k.text)}</div>
         </div>`).join("")
       : `<div class="empty">Chưa có dấu nào.<br>AI sẽ không tạo ra ghi chú nào.</div>`}
-      <button class="cta" ${marks.length?"":"disabled"} onclick="phase='note';render()">
+      <button class="cta" ${marks.length?"":"disabled"} onclick="goNote()">
         Tạo ghi chú từ ${marks.length} dấu
       </button>
       <div class="limit">Chỉ gom đúng những dấu bạn đã đánh — không tự thêm nội dung khác.</div>
@@ -252,8 +255,8 @@ function noteView(){
       Không có dấu nào ở: ${missed.join(", ")}. Muốn thêm thì quay lại bài học và đánh dấu.</div>`:""}
     <div class="actions">
       <button class="primary" onclick="toast('Đã lưu ghi chú.')">Lưu ghi chú</button>
-      <button class="ghost" onclick="phase='lesson';idx=0;render()">← Về bài học để đánh dấu thêm</button>
-      <button class="ghost" onclick="marks=[];phase='lesson';idx=0;render();toast('Đã xóa hết dấu.')">Xóa hết và tự viết</button>
+      <button class="ghost" onclick="backToLesson()">← Về bài học để đánh dấu thêm</button>
+      <button class="ghost" onclick="wipeAll()">Xóa hết và tự viết</button>
       <button class="ghost" onclick="reset()">Bắt đầu lại</button>
     </div>
   </div>`;

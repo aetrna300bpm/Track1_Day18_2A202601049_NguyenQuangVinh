@@ -1,77 +1,80 @@
 # AI Support Log — Day 18
-## Trần Thị Vân Anh (MHV `2A202601411`) & Nguyễn Quang Vinh (MHV `2A202601049`) · Nhóm 2 · Case B — AI Notes
+## Nguyễn Quang Vinh · MHV `2A202601049` · Nhóm 2 · Case B — AI Notes
 
-Lab cho phép dùng AI hỗ trợ sinh mã nguồn giao diện, tạo dữ liệu mẫu (*canned output*) và kiểm thử kỹ thuật; **không** dùng AI để thay thế con người trong việc phân tích bài toán, tư duy thiết kế, viết tài liệu (docs), tạo kịch bản test hay bịa đặt kết quả quan sát. Log này khai báo chính xác phạm vi hỗ trợ hạn chế của AI và khẳng định toàn bộ phần tài liệu (docs) & thiết kế là công việc do con người trực tiếp thực hiện.
-
----
-
-## 1. Công việc của con người (Human Tasks — Con người tự thực hiện 100%)
-
-**Nghiên cứu & Phân tích đầu vào**
-* Đọc và phân tích tài liệu hướng dẫn Day 18, tổng hợp dữ liệu phỏng vấn NV-01 / NV-02 từ Day 17 để trích dẫn quote làm bằng chứng thực tế.
-* Tự xây dựng bài toán **Hypothesis Problem** theo 5 thành phần (`situation / user / job / barrier / consequence`) và chỉ ra 4 điểm chưa được chứng minh.
-
-**Viết tài liệu thiết kế & Đánh giá Human–AI**
-* Tự lập **Solution Parking Lot** 6 hướng giải pháp dựa trên quan sát thực tế từ Day 17.
-* Tự tư duy và xây dựng **Comparison Contract** (khóa 70% bối cảnh) cùng **Distance Check** để tạo 3 phương án A/B/C khác biệt về cơ chế thay vì giao diện.
-* Tự phân tích và lập bảng **Human–AI Decision Table** (xác định mức độ agency `Don't Act → Ask → Act`, rủi ro khi AI sai và cơ chế phục hồi control).
-* Trực tiếp viết toàn bộ nội dung văn bản trong các tài liệu thiết kế ([`README.md`](README.md), [`three-option-design-sheet.md`](three-option-design-sheet.md), [`prototype-link.md`](prototype-link.md)).
-
-**Soạn kịch bản kiểm thử & Điều phối**
-* Trực tiếp biên soạn **Test Prompt**, 5 điểm quan sát (**Observation Focus**), luật facilitation và bảng counterbalance cho các phiên test ([`test-script.md`](test-script.md)).
-* Trực tiếp facilitate các phiên kiểm thử người dùng thật, tự tay ghi chép ghi chú kiểm thử ([`prototype-feedback-note.md`](prototype-feedback-note.md)) và tổng hợp bài học ([`group-feedback-synthesis.md`](group-feedback-synthesis.md)).
+Lab cho phép dùng AI để gợi ý cơ chế, tạo dữ liệu mẫu, canned output, code và rà soát câu hỏi dẫn dắt; **không** cho phép dùng AI để tạo quote/observation/feedback không tồn tại, làm sạch evidence đến mức mất ranh giới giữa lời user và diễn giải, hay viết hộ phần đóng góp và reflection cá nhân. Log này khai báo đúng những gì đã dùng.
 
 ---
 
-## 2. Phạm vi AI hỗ trợ (Hạn chế & Thuần kỹ thuật)
+## 1. AI đã hỗ trợ những gì
 
-AI chỉ được sử dụng như một công cụ hỗ trợ kỹ thuật phụ trợ (*technical assistant*):
+**Đọc và tổng hợp đầu vào**
 
-* **Sinh code boilerplate HTML/CSS/JS**: Hỗ trợ viết khung code HTML/CSS/JS thuần tự chứa cho 3 file prototype trong thư mục `prototype/` theo đúng thiết kế layout do nhóm đưa ra.
-* **Tạo dữ liệu giả lập (Canned Output)**: Hỗ trợ sinh chuỗi văn bản mẫu cho 4 thẻ gợi ý (Option B) và 7 khối bản nháp (Option C) dựa trên kịch bản bài học mà nhóm đã biên soạn trước.
-* **Rà soát & Test kỹ thuật**: Chạy thử luồng giao diện bằng Playwright để kiểm tra lỗi hiển thị/click trên giao diện trước khi mang đi test với người dùng.
+* Đọc 10 file PDF hướng dẫn Day 18 và slide guide để rút ra 6 chặng, 5 gate và danh sách anti-pattern.
+* Đọc lại repo Day 17 của nhóm và ánh xạ từng quote của NV-01 / NV-02 vào bảng Evidence Snapshot.
+
+**Chặng 1–3 — thiết kế**
+
+* Soạn bản nháp Hypothesis Problem theo cấu trúc `situation / user / job / barrier / consequence`, và bảng "Điều vẫn chưa được chứng minh".
+* Dựng lại Solution Parking Lot 6 hướng từ hành vi đã quan sát ở Day 17 (Day 17 nhóm không lưu Parking Lot thành file).
+* Đề xuất trục so sánh `USER CREATES → CO-CREATE → AI CREATES` và ba điểm A/B/C trên trục đó; soạn Comparison Contract, Distance check và Human–AI Decision Table.
+
+**Chặng 4 — build**
+
+* Viết toàn bộ code bốn prototype (`prototype/index.html`, `option-a/b/c.html`, `prototype-v2/index.html`): HTML/CSS/JS tự chứa, không CDN, không lưu trữ trình duyệt.
+* Tạo **content fixture giả lập** dùng chung: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm ngoài slide. Đây là **nội dung dựng sẵn cho prototype**, không phải dữ liệu từ user thật.
+* Tạo **canned AI output**: 4 thẻ gợi ý của Option B, bản nháp 7 khối của Option C, và 12 đoạn mở rộng của Phương án D — trong đó cố ý cài các chỗ AI vượt ra ngoài nội dung bài học để test xem tester có kiểm tra không.
+* Chạy Playwright kiểm thử toàn bộ luồng của cả bốn prototype và chụp màn hình từng bước.
+
+**Chặng 5–6 — chuẩn bị và tổng hợp**
+
+* Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation và bảng đảo thứ tự A/B/C.
+* Soạn sheet ghi chép field notes cho hai phiên.
+* **Sau khi nhận field notes viết tay của hai facilitator**: biên tập thành Feedback Note có cấu trúc, dựng bảng Group Synthesis, và dựng Phương án D từ Next Change do nhóm chốt.
 
 ---
 
-## 3. Điểm sai / hạn chế của AI và cách nhóm tự xử lý
+## 2. Điểm sai / hời hợt của AI và cách đã sửa
 
-| # | Hạn chế / Đề xuất chưa phù hợp của AI | Con người đã tự xử lý / sửa đổi thế nào |
+| # | AI làm sai hoặc hời hợt | Đã sửa thế nào |
 | :-- | :--- | :--- |
-| 1 | AI gợi ý thiết kế 3 phương án chỉ khác biệt về giao diện/màu sắc (anti-pattern). | Nhóm bác bỏ hoàn toàn, tự định hình lại 3 phương án dựa trên trục **AI Agency** (`Don't Act / Ask / Act`) và phân quyền cho người dùng. |
-| 2 | AI mặc định nhóm có 3 người theo tài liệu mẫu của bài lab. | Nhóm tự điều chỉnh phân công công việc (1 thành viên gánh 2 option & 2 phiên test) để đảm bảo chất lượng bài làm. |
-| 3 | AI tạo bản nháp Option C "hoàn hảo", không có lỗi. | Nhóm chủ động yêu cầu cài 1 khối dữ liệu suy diễn quá đà (ngưỡng 10.000 tài liệu) để thử thách khả năng phát hiện lỗi của tester. |
-| 4 | AI không thể thực hiện phỏng vấn hay viết phản hồi thật. | Toàn bộ tài liệu phỏng vấn và tổng hợp feedback được nhóm giữ trống hoàn toàn để điền từ phiên test thực tế với người dùng. |
+| 1 | **AI làm hộ luôn phần brainstorm.** Ngay từ đầu AI đã đưa ra trọn bộ ba ý tưởng prototype thay vì để nhóm tự nghĩ. Bài lab này có mục tiêu rèn khả năng brainstorm, nên phần đó lẽ ra phải là của người học. | Xem mục 4 — đây là nhận xét của chính người nộp, ghi lại đúng nguyên ý. |
+| 2 | Mặc định bài lab chạy theo cấu trúc **3 người / 3 option / 3 tester**, trong khi nhóm chỉ có 2 người. | Chốt lại: giữ 3 options, mỗi người facilitate 1 phiên → **2 Feedback Notes**, và **ghi rõ đây là thiếu so với chuẩn** thay vì bịa phiên thứ ba. |
+| 3 | Giả định repo Day 17 đã có sẵn **Solution Parking Lot**. Kiểm tra thì không có. | Dựng lại công khai từ hành vi trong hai practice note, ghi rõ trong Design Sheet rằng đây là bản **tái tạo**. |
+| 4 | Bản nháp đầu của ba option nghiêng về mô tả **màn hình** — đúng anti-pattern *"3 options chỉ khác màu sắc, wording hoặc bố cục"*. | Ép lại theo trục agency: chốt **AI Act / Ask / Don't Act** trước, rồi mới thiết kế màn hình. Khoá 70% context, content và component cho cả ba. |
+| 5 | Option C ban đầu chỉ có bản nháp "đúng và đẹp" — không có gì để tester phát hiện AI sai. | Cài một khối AI **suy diễn quá đà** (ngưỡng *10.000 tài liệu*) có nhãn vàng và dòng cơ sở nói rõ con số đó không có trong bài. |
+| 6 | Code Option B để hiệu ứng xuất hiện chạy lại cho **mọi** thẻ ở mỗi lần re-render → cả rail nhấp nháy. | Phát hiện qua ảnh chụp Playwright. Bỏ animation, thay bằng nhãn tĩnh **MỚI**. |
+| 7 | **Bug thật trong code AI viết:** biến trạng thái đặt tên `open` và `status` trùng với `document.open` / `window.status`, nên trong inline handler chúng trỏ nhầm đối tượng. Hậu quả: nút *Thu gọn* của Phương án D và nút *Xoá hết* của Option B **không hoạt động** — nhưng không báo lỗi gì. | Phát hiện khi test tự động thấy trạng thái không đổi sau khi bấm. Đổi tên biến và **định tuyến toàn bộ thao tác đổi state qua hàm có tên**, thay vì gán biến trực tiếp trong `onclick`. Chạy lại regression cho cả bốn prototype. |
+| 8 | AI **không thể** và **không được** tạo Feedback Note. | Hai phiên test do người thật chạy. AI chỉ nhận field notes viết tay và biên tập lại; **mọi quote trong repo đều là lời tester thật**. Chỗ facilitator không quan sát được thì ghi là *không quan sát được*, không suy đoán ngược từ hành vi. |
 
 ---
 
-## 4. Ranh giới bằng chứng (Evidence Boundaries)
+## 3. Ranh giới evidence — khai báo rõ
 
-* **Quote người dùng (NV-01, NV-02)**: 100% từ phỏng vấn người thật ở Day 17.
-* **Tài liệu & Thiết kế**: 100% do con người trực tiếp suy nghĩ và biên soạn.
-* **Code Prototype & Canned Data**: Có sự hỗ trợ sinh mã nguồn phụ trợ từ AI.
-* **Ghi chép kiểm thử**: 100% người thật thực hiện và ghi nhận.
+| Loại nội dung | Nguồn |
+| :--- | :--- |
+| Quote của NV-01, NV-02 trong Evidence Snapshot | **Người thật**, từ 2 phỏng vấn ghi âm ngày 17/08/2026 của Day 17 |
+| Quote của `T1`, `T2` trong hai Feedback Note | **Người thật**, từ 2 phiên test Day 18. Không ghi âm — facilitator ghi tay tại chỗ |
+| Cột "Điều nhóm đang diễn giải" · khối `INTERPRETED` | **Diễn giải của nhóm**, tách riêng khỏi lời user |
+| Bài học *Vector Database & RAG*, slide, lời giảng | **Nội dung dựng sẵn cho prototype** — không phải bài học có thật |
+| Gợi ý của Option B, bản nháp của Option C, phần mở rộng của Phương án D | **Canned output**, viết tay sẵn — không gọi model |
+| Ô "evidence được đọc hay bỏ qua" ở hai phiên | **Không đo được.** Ghi thẳng là không quan sát tách bạch được, không điền suy đoán |
 
 ---
 
-## 5. Phần tự viết — Thành viên nhóm
+## 4. Phần tự viết — Nguyễn Quang Vinh
 
-> Điền bằng lời của chính mình sau khi đã chạy phiên test. Đây là phần lab yêu cầu phải là phản ánh cá nhân, không được để AI viết hộ.
+**Chỗ AI hiểu sai bối cảnh nhóm mình nhất là gì?**
 
-### Trần Thị Vân Anh — MHV `2A202601411` (Case B Lead)
-* **Chỗ tôi thấy AI hiểu sai bối cảnh nhóm mình nhất:**
-  > AI mặc định nhóm có 3 người và đề xuất chia đều 3 option độc lập cho 3 người. Đồng thời AI giả định nhóm đã lưu sẵn file Solution Parking Lot từ Day 17 (trong khi ở Day 17 hai thành viên phỏng vấn độc lập và chưa lưu file pool chung). Ban đầu AI cũng đề xuất 3 option chỉ khác nhau về hình thức hiển thị giao diện thay vì khác biệt về cơ chế tương tác Human–AI Agency.
-* **Điều tôi tự quyết định khác với đề xuất của AI, và vì sao:**
-  > Tôi đã chủ động định hình lại 3 phương án dựa trên trục **AI Agency** (`Don't Act` ở Option A, `Ask` ở Option B, `Act` không commit ở Option C). Vì nhóm chỉ có 2 người, tôi phân công tôi đảm nhận Option B (Live Rail) & 1 phiên test, còn Vinh đảm nhận Option A, C & 2 phiên test để đảm bảo đủ 3 Feedback Notes cho Gate 5. Tôi cũng yêu cầu cài một khối dữ liệu AI suy diễn quá đà ("ngưỡng 10.000 tài liệu") ở Option C để test khả năng kiểm soát của tester.
-* **Sau khi test thật, điều gì trong thiết kế ba option hóa ra là AI đoán sai:**
-  > Ban đầu nhóm và AI tưởng Option C (Auto recap) sẽ được ưa chuộng nhất vì học viên không phải thao tác gì trong lúc nghe giảng. Tuy nhiên khi test thực tế, tester lo ngại AI tự tổng hợp sẽ bỏ sót hoặc suy diễn sai lời giảng ngoài slide của giảng viên, nên họ ưu tiên Option B (Live Rail) và Option A (Marker-first) vì họ được giữ quyền quyết định (*Human Control*) nội dung ngay từ đầu.
+> Là về **mục đích**. Bài này nhằm rèn luyện khả năng brainstorm, mà bước đầu AI đã đi làm hết cho mình việc lên ý tưởng về prototype.
 
-### Nguyễn Quang Vinh — MHV `2A202601049`
-* **Chỗ tôi thấy AI hiểu sai bối cảnh nhóm mình nhất:**
-  > AI liên tục đưa ra các gợi ý giao diện rườm rà, có hiệu ứng chuyển cảnh nhấp nháy cho rail đề xuất ở Option B làm cắt luồng chú ý của học viên. AI cũng cho rằng người dùng sẵn sàng đọc các dòng giải thích dài về "vì sao AI gợi ý", nhưng thực tế học viên chỉ lướt nhanh thẻ nguồn.
-* **Điều tôi tự quyết định khác với đề xuất của AI, và vì sao:**
-  > Tôi tự quyết định loại bỏ toàn bộ hiệu ứng animation nhấp nháy trên rail Option B và thay bằng nhãn tĩnh **MỚI**, giúp giao diện sạch và không gây nhiễu khi nghe giảng. Tôi cũng tự viết kịch bản test (`test-script.md`) với 5 luật facilitation nghiêm ngặt (không gợi ý nút bấm, không hỏi "bạn có thích không") thay vì câu hỏi dẫn dắt mang tính định hướng của AI.
-* **Sau khi test thật, điều gì trong thiết kế ba option hóa ra là AI đoán sai:**
-  > AI đoán rằng ở Option A (Marker-first) học viên sẽ chăm chỉ highlight và bấm nút "Chưa hiểu". Thực tế khi nghe giảng hăng say, học viên rất dễ quên bấm đánh dấu và chỉ phát hiện ra mình bị thiếu nội dung sau khi bài học đã kết thúc.
+**Bạn tự quyết định khác với đề xuất của AI ở chỗ nào, và vì sao?**
 
+> Mình có hỏi off-script trong lúc phỏng vấn, nhằm nắm được ý tưởng của người test — thay vì bám chặt bộ câu hỏi đã soạn sẵn. Chính từ đó mới ra được đề xuất ghép A và B.
 
+**Sau khi test thật, điều gì trong thiết kế 3 option hoá ra là AI (và tôi) đoán sai?**
 
+> Việc ghi chú **không nhằm tóm tắt đầy đủ nhất nội dung buổi học**. Ngược lại, với nhiều người, ghi chú là ghi lại những gì quan trọng / unconventional / đặc biệt / khó hiểu từ buổi học. Cả ba option đều được thiết kế trên giả định sai này, và Option C là chỗ giả định sai đó lộ rõ nhất.
+
+**Về cách mình facilitate**
+
+> Mình nhiều khi gợi ý lời nói cho người ta, làm người ta bị ngắt suy nghĩ — đúng vào những lúc họ đang im lặng suy nghĩ. Lần sau mình sẽ để họ tự tư duy, thay vì mớm lời.

@@ -2,6 +2,8 @@
 ## Kịch bản chạy phiên test A/B/C · Case B — AI Notes
 
 > In ra hoặc mở song song khi facilitate. **Một phiên = 20 phút = một tester = cả A/B/C.**
+>
+> ✅ **Đã dùng thật cho 2 phiên Day 18.** Kết quả ở [`prototype-feedback-note.md`](prototype-feedback-note.md) và [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md). Phần "cần sửa cho lần sau" ở mục 7.
 
 ---
 
@@ -87,11 +89,11 @@ Ba phiên độc lập, mỗi phiên một facilitator, tester phải là **ngư
 
 Đảo thứ tự giữa ba phiên để giảm order effect — nếu ai cũng chạy A→B→C thì option cuối luôn được lợi vì tester đã quen giao diện.
 
-| Phiên | Facilitator | Tester | Thứ tự chạy |
-| :--- | :--- | :--- | :--- |
-| 1 | Nguyễn Quang Vinh | Tester 1 — `____________` | **A → B → C** |
-| 2 | Trần Thị Vân Anh | Tester 2 — `____________` | **B → C → A** |
-| 3 | Nguyễn Quang Vinh | Tester 3 — `____________` | **C → A → B** |
+| Phiên | Facilitator | Tester | Thứ tự chạy | Trạng thái |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | Nguyễn Quang Vinh | `T1` — ghi chú bằng Notepad | **A → B → C** | ✅ đã chạy |
+| 2 | Trần Thị Vân Anh | `T2` — ghi chú ra vở | **B → C → A** | ✅ đã chạy |
+| ~~3~~ | — | — | ~~C → A → B~~ | ❌ không có — nhóm chỉ 2 người |
 
 > Người phụ trách thiết kế một option **vẫn phải cho tester chạy cả ba**, không chỉ mang option của mình đi test.
 
@@ -102,3 +104,18 @@ Ba phiên độc lập, mỗi phiên một facilitator, tester phải là **ngư
 * **Giải thích hộ.** Nếu tester bí ở B vì không hiểu vì sao nút Thêm bị khóa — **đó chính là kết quả cần ghi**, không phải sự cố cần cứu.
 * **Ghi "tester thích B".** Vô nghĩa nếu không kèm tester *đã làm gì* và *đánh đổi gì*.
 * **Kết luận sau ba người.** Ba feedback là input cho iteration tiếp theo, không phải bằng chứng solution đã validated.
+
+---
+
+## 7. Sau khi chạy thật — kịch bản này hỏng ở đâu
+
+Ghi lại để lần sau không lặp:
+
+1. **Ô "evidence được đọc hay bỏ qua" không đo được bằng mắt.** Cả hai facilitator đều không tách bạch được *tester đọc rồi bỏ qua* với *tester không nhìn thấy*. Hậu quả: toàn bộ phần thiết kế evidence & uncertainty của Chặng 3 chưa được kiểm chứng.
+   → **Lần sau:** quay màn hình có con trỏ, **hoặc** hỏi đúng một câu sau khi tester xong mỗi option: *"chỗ này nó lấy từ đâu ra?"*
+2. **Bối cảnh "đang test UI" làm tester không đọc nội dung bài học.** `T2` nói thẳng: *"đây là test UI tính năng, ai đọc slide làm gì."*
+   → **Lần sau:** mở đầu bằng một câu neo vào việc học thật, không nói "test giao diện".
+3. **Facilitator phiên 1 mớm lời** cho tester đúng vào lúc họ im lặng suy nghĩ.
+   → **Lần sau:** đếm thầm tới 5 trước khi mở miệng, chỉ dùng đúng ba câu cứu hộ.
+4. **Ô "Ngày & thời lượng" không ai điền** — không mang lại thông tin gì cho phân tích.
+   → **Lần sau:** bỏ khỏi sheet.

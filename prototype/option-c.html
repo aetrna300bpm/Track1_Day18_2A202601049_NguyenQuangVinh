@@ -162,6 +162,11 @@ function keepSlideOnly(){ DRAFT.forEach(b=>{ dropped[b.id] = b.level!=="slide"; 
   toast("Chỉ giữ phần lấy từ slide."); }
 function dropAll(){ DRAFT.forEach(b=>dropped[b.id]=true); render(); toast("Đã bỏ toàn bộ bản nháp."); }
 function restoreAll(){ dropped={}; render(); toast("Đã khôi phục bản nháp."); }
+function startEdit(id){ editing=id; render(); }
+function cancelEdit(){ editing=null; render(); }
+function toggleBasis(id){ showBasis[id]=!showBasis[id]; render(); }
+function doSave(){ saved=true; render(); toast("Đã lưu ghi chú."); }
+function undoSave(){ saved=false; render(); toast("Đã hoàn tác lưu."); }
 function addOwn(){ const el=document.getElementById("ni"); const v=(el.value||"").trim(); if(!v) return; own.push(v); render(); }
 function delOwn(i){ own.splice(i,1); render(); }
 
@@ -240,17 +245,17 @@ function blockCard(b){
       <span class="chip ${b.level}">${b.src}</span>
       <textarea id="te${b.id}">${esc(txt(b))}</textarea>
       <div class="blkbtns"><button class="b2" onclick="saveEdit(${b.id})">Lưu sửa</button>
-      <button class="b2" onclick="editing=null;render()">Hủy</button></div></div>`;
+      <button class="b2" onclick="cancelEdit()">Hủy</button></div></div>`;
   }
   return `<div class="blk ${isDropped?"dropped":""} ${b.level==="infer"&&!isDropped?"infer":""}">
-    <span class="chip ${b.level}" onclick="showBasis[${b.id}]=!showBasis[${b.id}];render()">${b.src}${b.basis?" ⓘ":""}</span>
+    <span class="chip ${b.level}" onclick="toggleBasis(${b.id})">${b.src}${b.basis?" ⓘ":""}</span>
     <div>${esc(txt(b))}</div>
     ${b.basis&&showBasis[b.id]?`<div class="basis">${esc(b.basis)}</div>`:""}
     <div class="blkbtns">
       ${isDropped
         ? `<span class="dropmark">✕ Đã bỏ</span><button class="b2" onclick="restore(${b.id})">Khôi phục</button>`
         : `<span class="keep">✓ Sẽ lưu</span>
-           <button class="b2" onclick="editing=${b.id};render()">Sửa</button>
+           <button class="b2" onclick="startEdit(${b.id})">Sửa</button>
            <button class="b2" onclick="drop(${b.id})">Bỏ</button>`}
     </div></div>`;
 }
@@ -265,7 +270,7 @@ function draftView(){
       ${k.map(b=>`<div class="blk"><span class="chip ${b.level}">${b.src}</span><div>${esc(txt(b))}</div></div>`).join("")}
       ${own.map(o=>`<div class="mine">${esc(o)}<span class="src">Bạn tự viết</span></div>`).join("")}
       <div class="actions">
-        <button class="ghost" onclick="saved=false;render();toast('Đã hoàn tác lưu.')">↩ Hoàn tác lưu</button>
+        <button class="ghost" onclick="undoSave()">↩ Hoàn tác lưu</button>
         <button class="ghost" onclick="phase='lesson';render()">← Về bài học</button>
         <button class="ghost" onclick="reset()">Bắt đầu lại</button>
       </div></div>`;
@@ -294,7 +299,7 @@ function draftView(){
     </div>
     ${own.map((o,i)=>`<div class="mine">${esc(o)} <button class="b2" style="padding:2px 9px" onclick="delOwn(${i})">Xóa</button></div>`).join("")}
     <div class="actions">
-      <button class="primary" ${(k.length+own.length)?"":"disabled"} onclick="saved=true;render();toast('Đã lưu ghi chú.')">
+      <button class="primary" ${(k.length+own.length)?"":"disabled"} onclick="doSave()">
         Lưu ghi chú (${k.length+own.length} mục)</button>
       <button class="ghost" onclick="phase='lesson';render()">← Về bài học</button>
       <button class="ghost" onclick="reset()">Bắt đầu lại</button>

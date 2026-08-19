@@ -173,6 +173,9 @@ function act(id,what){
   if(what==="added") toast("Đã thêm vào ghi chú của bạn.");
 }
 function undo(id){ status[id]=null; render(); toast("Đã hoàn tác."); }
+function cancelEdit(){ editing=null; render(); }
+function wipeAll(){ status={}; drafts={}; own=[]; phase="lesson"; idx=0; render(); toast("Đã xóa hết."); }
+function advanceB(){ idx++; if(!paused) pauseAt=idx; render(); }
 function addOwn(){ const el=document.getElementById("ni"); const v=(el.value||"").trim(); if(!v) return;
   own.push({text:v,src:"Bạn viết lúc "+MOMENTS[Math.min(idx,2)].t,m:Math.min(idx,2)}); render(); }
 function delOwn(i){ own.splice(i,1); render(); }
@@ -192,7 +195,7 @@ function sugCard(s){
       <textarea id="ta${s.id}">${esc(txt(s))}</textarea>
       <div class="sugbtns">
         <button class="b1" onclick="act(${s.id},'saveEdit')">Lưu &amp; thêm</button>
-        <button class="b2" onclick="editing=null;render()">Hủy</button>
+        <button class="b2" onclick="cancelEdit()">Hủy</button>
       </div></div>`;
   }
   if(st==="added" || st==="skipped"){
@@ -279,7 +282,7 @@ function lessonView(){
       <div class="card" style="overflow:hidden">
         ${stage}
         <div class="bar">
-          <button class="play" ${ended?"disabled":""} onclick="idx++;if(!paused)pauseAt=idx;render()">
+          <button class="play" ${ended?"disabled":""} onclick="advanceB()">
             ${ended?"Đã hết bài":"▶ Tiếp tục bài giảng"}
           </button>
           <span>${ended?"32:00":m.t}</span>
@@ -319,7 +322,7 @@ function noteView(){
     <div class="actions">
       <button class="primary" onclick="toast('Đã lưu ghi chú.')">Lưu ghi chú</button>
       <button class="ghost" onclick="phase='lesson';render()">← Về bài học</button>
-      <button class="ghost" onclick="status={};drafts={};own=[];phase='lesson';idx=0;render();toast('Đã xóa hết.')">Xóa hết và tự viết</button>
+      <button class="ghost" onclick="wipeAll()">Xóa hết và tự viết</button>
       <button class="ghost" onclick="reset()">Bắt đầu lại</button>
     </div>
   </div>`;

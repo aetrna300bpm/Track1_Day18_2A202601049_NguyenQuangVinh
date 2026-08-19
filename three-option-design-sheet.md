@@ -172,3 +172,52 @@ Do not explain: ý nghĩa ba màu chip; rằng bản nháp chưa được lưu.
 * [x] Mỗi option có nút **Bắt đầu lại** đưa về common context, và **Tất cả phương án** về hub.
 
 > ✅ **GATE 4 — Test-ready:** Một người không tham gia build mở `index.html`, chạy hết cùng một task qua A/B/C và quay về context ban đầu mà không cần ai giải thích.
+
+---
+---
+
+## Chặng 6 — Sau khi test · Phương án D
+
+> Phần này viết **sau** khi có 2 Feedback Notes thật. Nó không thay thế A/B/C — A/B/C là thứ đã được mang đi test và phải giữ nguyên làm bằng chứng. Đây là **Next Change** đã được dựng thành prototype: [`prototype-v2/index.html`](prototype-v2/index.html).
+
+### 6.1. Ba phát hiện buộc nhóm phải đổi
+
+| # | Phát hiện từ test | Nó phủ định điều gì trong thiết kế Chặng 2–3 |
+| :-- | :--- | :--- |
+| 1 | **Affordance đánh dấu của A vô hình.** `T1`: *"Em không biết là bấm được vào chữ trong slide để ghi note đấy."* `T2`: khó hiểu tương tác đánh dấu. | Nhóm coi "bấm vào dòng để highlight" là hiển nhiên. Nó không hiển nhiên. Cơ chế đúng nhưng **thao tác sai**. |
+| 2 | **Chi phí thật của B không phải số lần bấm mà là mất mạch nghe giảng.** `T1`: *"cúi xuống đọc cái ngẩng lên là không hiểu gì rồi."* Cả hai tester đều hiểu ngược cơ chế "phải bấm Thêm thì mới lưu". | Nhóm thiết kế **Ask** ở B để bảo vệ quyền quyết định của user. Đúng về nguyên tắc, nhưng đặt sai thời điểm: **hỏi trong lúc đang nghe giảng là hỏi vào lúc user không trả lời được**. |
+| 3 | **C bị bác ở mức khái niệm, không phải mức giao diện.** `T1`: *"chẳng liên quan gì đến ghi chú, out of scope… ghi chú nhằm personalize còn cái này thì viết hết hộ."* `T2`: *"note cái gì vậy, cho vào AI tóm tắt cho nhanh."* | Nhóm giả định **ghi chú = bản tóm tắt bài học**. Với cả hai tester, **ghi chú = ghi lại thứ cần chú ý để review sau**. Một bản tóm tắt do máy viết hộ, dù đúng và đầy đủ, **không phải là ghi chú của họ**. Điều này làm hỏng tiền đề của C chứ không chỉ hỏng UI của C. |
+
+Điểm 3 cũng chỉnh lại chính **Hypothesis Problem**: phần *"tạo ra một bản ghi chú có cấu trúc"* ở Chặng 1 đã nghiêng về nghĩa "tóm tắt". Bằng chứng nói job thật gần với *"giữ lại đúng những chỗ tôi thấy quan trọng hoặc chưa hiểu, ở dạng tôi đọc lại được"*.
+
+### 6.2. Phương án D — cơ chế
+
+```
+BÔI ĐEN (trong lúc học)  →  AI IM LẶNG  →  CUỐI BÀI: USER GỌI  →  AI MỞ RỘNG (tách riêng)
+```
+
+| Thành phần | Quyết định | Đến từ đâu |
+| :--- | :--- | :--- |
+| **Thao tác đánh dấu** | **Bôi đen** bất kỳ đoạn chữ nào trên slide hoặc lời giảng → hiện thanh nổi *🖍 Đánh dấu* / *❓ Chưa hiểu*. Kèm một dòng gợi ý luôn hiển thị ngay dưới khung bài học. | `T1` đề xuất nguyên văn: đánh dấu *"có thể ở dưới dạng bôi đen thay vì clickable như trong demo"* |
+| **AI trong lúc học** | **Không làm gì.** Không thẻ, không gợi ý, không phải duyệt. | Phát hiện 2 — mọi bước duyệt trong lúc học đều cắt mạch nghe giảng |
+| **Gọi AI** | Cuối bài, mỗi mục có nút **✨ Làm rõ giúp tôi**, hoặc **Làm rõ tất cả**. **AI không viết gì nếu không được gọi.** | Giữ nguyên nguyên tắc *Don't Act* của A, chỉ mở rộng phạm vi Act khi được yêu cầu |
+| **Vị trí phần AI** | Nằm **thu gọn bên dưới** chữ của user, nhãn *"AI MỞ RỘNG — KHÔNG PHẢI CHỮ CỦA BẠN"*, bấm mới bung. Ghi chú của user luôn là dòng đầu và luôn hiện. | Cả hai tester chọn A vì **tự chủ**; ghi chú phải giữ nguyên là của họ |
+| **Bỏ AI** | *Bỏ phần AI này* cho từng mục, *Bỏ hết phần AI mở rộng* cho toàn bài. Bỏ xong nút *Làm rõ* quay lại. | Ở B và C, đường recovery kiểu "Sửa" **không ai dùng** — người dùng thà tự gõ. Nên recovery ở D là **bỏ**, không phải **sửa** |
+| **Uncertainty** | Giữ lại đúng một cơ chế của C: khi AI thêm thứ không có trong bài (ví dụ tên gọi *cosine similarity*), hiện nhãn **"AI thêm — không có trong bài"** kèm một dòng nói rõ AI dựa vào đâu. | Đây là phần **chưa được test** ở cả hai phiên; giữ lại để vòng sau kiểm |
+
+### 6.3. Human–AI decision của Phương án D
+
+| Human–AI decision | Phương án D |
+| :--- | :--- |
+| **User làm gì? AI làm gì?** | User chọn cái gì đáng giữ (bôi đen / gắn cờ *Chưa hiểu* / tự gõ). AI mở rộng **đúng đoạn đã chọn**, khi được gọi. AI **không bao giờ chọn hộ**. |
+| **Act / Ask / Don't Act?** | **Don't Act** suốt bài học → **Act khi được gọi**, cho từng mục một. Không có Ask, vì test cho thấy hỏi trong lúc học là hỏi sai thời điểm. |
+| **User hiểu capability/limit bằng gì?** | Trong lúc học: *"AI đang im lặng. Nó chỉ viết khi bạn yêu cầu, ở cuối bài."* Ở ghi chú: *"Ghi chú này là của bạn. AI chưa viết gì cả."* |
+| **Evidence / uncertainty** | Mỗi mục có chip nguồn (`Slide 5`, `Lời giảng 18:05`). Mỗi phần AI mở rộng ghi rõ nó dựa trên nguồn nào, và gắn nhãn khi vượt ra ngoài bài học. |
+| **Control / recovery** | Xoá dấu trước khi mở ghi chú · Thu gọn · Bỏ phần AI từng mục · Bỏ hết phần AI · Về bài học đánh dấu thêm · Xoá hết và tự viết · Bắt đầu lại. |
+
+### 6.4. Điều Phương án D **chưa** chứng minh
+
+* Chưa ai test bản D. Nó là **hiện thân của Next Change**, không phải kết quả đã được kiểm chứng.
+* Giả thuyết trung tâm — *bôi đen dễ khám phá hơn bấm-vào-dòng* — vẫn **chưa có bằng chứng**, mới chỉ là lời đề xuất của một tester.
+* Cơ chế uncertainty (*"AI thêm — không có trong bài"*) chưa từng được người dùng nào chạm tới.
+* Nhóm **không** dùng bản D để nói rằng vấn đề đã được giải quyết. Kế hoạch kiểm ở vòng sau nằm ở [`group-feedback-synthesis.md`](group-feedback-synthesis.md#5-sau-next-change--cần-test-gì-tiếp).
