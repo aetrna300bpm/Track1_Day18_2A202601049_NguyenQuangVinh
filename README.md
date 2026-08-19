@@ -3,28 +3,23 @@
 
 ---
 
-## 📋 1. Thông tin cá nhân và nhóm
+## 📋 1. Thông tin nhóm
 
-* **Mã học viên (MHV):** `2A202601411`
-* **Họ và tên:** Trần Thị Vân Anh (Case B Lead)
-* **Tên nhóm:** Nhóm 2 — Track 1 VLearn AI Product Building
+
+* **Tên nhóm:** bàn giữa 
 * **Thành viên nhóm:**
   1. Trần Thị Vân Anh (MHV `2A202601411`) — Case B Lead
   2. Nguyễn Quang Vinh (MHV `2A202601049`) — Member
 * **Case:** **Case B — AI Notes: Personal Learning Notes** *(tiếp tục đúng case của Day 17, không đổi case)*
 * **Đầu vào từ Day 17:** [Track1_Day17_2A202601049_NguyenQuangVinh](https://github.com/aetrna300bpm/Track1_Day17_2A202601049_NguyenQuangVinh)
 
-> ### ⚠️ Nhóm 2 người — khai báo trước những chỗ thiếu so với chuẩn
->
-> Bài lab thiết kế cho nhóm **3 người**. Nhóm 2 có **2 người**. Nhóm chọn khai báo thẳng thay vì bù cho đủ số:
 >
 > | | Chuẩn của lab | Nhóm 2 | Xử lý |
 > | :--- | :--- | :--- | :--- |
-> | Solution Options | 3 | **3** ✅ | Giữ đủ để Gate 2 không bị hạ chuẩn |
-> | Practice Notes (Day 17) | 3 | **2** | Nhóm chỉ phỏng vấn 2 người. Giữ con số thật |
+> | Solution Options | 3 | **3** ✅ | Giữ đủ  |
+> | Practice Notes (Day 17) | 3 | **2** | Nhóm phỏng vấn 2 người.  |
 > | Feedback Notes (Day 18) | 3 | **2** | Mỗi thành viên facilitate 1 phiên với 1 tester ngoài nhóm |
 >
-> Ảnh hưởng cụ thể của việc thiếu phiên thứ ba được nêu ở [`group-feedback-synthesis.md` §4](group-feedback-synthesis.md#4-hạn-chế-của-chính-đợt-test-này), không giấu đi.
 
 ---
 
@@ -174,8 +169,8 @@ Tổng hợp đầy đủ: [`group-feedback-synthesis.md`](group-feedback-synthe
 
 Bản đầy đủ: [`ai-support-log.md`](ai-support-log.md)
 
-* **AI đã giúp:** đọc và tổng hợp tài liệu lab + repo Day 17; soạn nháp Hypothesis Problem, Parking Lot, Comparison Contract và Human–AI Decision Table; viết toàn bộ code bốn prototype HTML tự chứa; tạo content fixture và canned output; soạn Test Prompt và sheet ghi chép; biên tập field notes viết tay thành Feedback Note có cấu trúc; chạy Playwright kiểm thử.
-* **AI sai / hời hợt ở đâu:** **làm hộ luôn phần brainstorm** — đưa ra trọn bộ ba ý tưởng prototype thay vì để nhóm tự nghĩ, trong khi mục tiêu của bài là rèn brainstorm; mặc định cấu trúc nhóm 3 người; giả định Day 17 đã có Parking Lot; bản nháp đầu ba option nghiêng về khác **màn hình** thay vì khác **cơ chế**; Option C ban đầu không có chỗ nào cho tester phát hiện AI sai; và **hai bug thật trong code AI viết** — biến `open` / `status` trùng tên với `document.open` / `window.status` làm nút *Thu gọn* và *Xoá hết* im lặng không hoạt động.
+* **AI đã giúp:** đọc tài liệu lab + repo Day 17; soạn nháp Hypothesis Problem, Parking Lot, Comparison Contract và Human–AI Decision Table để người dùng duyệt; viết prototype HTML dựa trên mô tả từ user; tạo content fixture và canned output ; biên tập field notes viết tay thành Feedback Note có cấu trúc . 
+* **AI sai / hời hợt ở đâu:** **làm hộ luôn phần brainstorm** — đưa ra trọn bộ ba ý tưởng prototype tự tin là đúng trong khi không giải quyết được paint point thật  ; trong khi mục tiêu của bài là rèn brainstorm; mặc định cấu trúc nhóm 3 người; giả định Day 17 đã có Parking Lot; bản nháp đầu ba option nghiêng về khác **màn hình** thay vì khác **cơ chế**; Option C ban đầu không có chỗ nào cho tester phát hiện AI sai; và **hai bug thật trong code AI viết** — biến `open` / `status` trùng tên với `document.open` / `window.status` làm nút *Thu gọn* và *Xoá hết* im lặng không hoạt động.
 * **Tôi tự sửa gì:** hỏi off-script trong lúc phỏng vấn thay vì bám bộ câu hỏi soạn sẵn — chính từ đó mới ra đề xuất ghép A và B; chốt lại cách chia việc cho nhóm 2 người; ép thiết kế lại theo trục `Act / Ask / Don't Act` trước khi vẽ màn hình.
 * **Điều tôi và AI cùng đoán sai:** ghi chú **không** nhằm tóm tắt đầy đủ nội dung buổi học. Với nhiều người, ghi chú là ghi lại những gì quan trọng / khó hiểu / đặc biệt. Cả ba option đều dựng trên giả định sai này.
 * **Ranh giới AI không được vượt:** mọi observation và quote trong repo **chỉ đến từ hai phiên test thật**. Chỗ facilitator không quan sát được thì ghi là *không quan sát được* — không suy đoán ngược từ hành vi.
