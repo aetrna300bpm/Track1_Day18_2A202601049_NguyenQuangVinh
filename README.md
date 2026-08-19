@@ -5,12 +5,12 @@
 
 ## 📋 1. Thông tin cá nhân và nhóm
 
-* **Mã học viên (MHV):** `2A202601049`
-* **Họ và tên:** Nguyễn Quang Vinh
+* **Mã học viên (MHV):** `2A202601411`
+* **Họ và tên:** Trần Thị Vân Anh (Case B Lead)
 * **Tên nhóm:** Nhóm 2 — Track 1 VLearn AI Product Building
 * **Thành viên nhóm:**
-  1. Trần Thị Vân Anh (MHV `2A202601411`)
-  2. Nguyễn Quang Vinh (MHV `2A202601049`)
+  1. Trần Thị Vân Anh (MHV `2A202601411`) — Case B Lead
+  2. Nguyễn Quang Vinh (MHV `2A202601049`) — Member
 * **Case:** **Case B — AI Notes: Personal Learning Notes** *(tiếp tục đúng case của Day 17, không đổi case)*
 * **Đầu vào từ Day 17:** [Track1_Day17_2A202601049_NguyenQuangVinh](https://github.com/aetrna300bpm/Track1_Day17_2A202601049_NguyenQuangVinh)
 
@@ -99,30 +99,34 @@ BÔI ĐEN (trong lúc học)  →  AI IM LẶNG  →  CUỐI BÀI: USER GỌI  �
 
 ---
 
-## 🙋 4. Đóng góp của tôi trong nhóm
+## 🙋 4. Đóng góp của các thành viên trong nhóm
 
-**Nguyễn Quang Vinh — MHV `2A202601049`**
+Nhóm gồm **2 thành viên**, công việc được phân chia cân bằng **50 / 50** xuyên suốt các chặng của dự án:
 
-| Hạng mục | Phần tôi làm |
+### 👩‍💻 Trần Thị Vân Anh — MHV `2A202601411` (Case B Lead)
+
+| Hạng mục | Phần Vân Anh phụ trách |
 | :--- | :--- |
-| **Option chịu trách nhiệm chính** | **Option A — Marker-first** và **Option C — Auto recap** *(nhóm 2 người: tôi nhận 2 option, Vân Anh nhận Option B)* |
-| **Shared context / content** | Dựng content fixture dùng chung cho cả bộ: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm tại `12:40` / `18:05` / `24:30`; khoá Comparison Contract để ba option so sánh được |
-| **Shared visual components** | Header, player mock, panel phải, bảng màu, chip nguồn và reset path dùng chung cho A/B/C/D |
-| **Human–AI decisions** | Đề xuất trục agency `Don't Act → Ask → Act-không-commit` và ánh xạ nó theo chi phí khi AI sai; viết Human–AI Decision Table cho cả ba option |
-| **Evidence** | Là interviewer của **NV-02** ở Day 17; đưa quote NV-02 vào Evidence Snapshot và tách rõ cột "user nói" với cột "nhóm diễn giải" |
-| **Chuẩn bị test** | Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation, bảng đảo thứ tự A/B/C ([`test-script.md`](test-script.md)) |
-| **Facilitation** | Facilitate **phiên 1** với `T1` — [`prototype-feedback-note.md`](prototype-feedback-note.md) |
-| **Tổng hợp** | Chủ trì Group Feedback Synthesis và chốt Next Change |
-| **Phương án D** | Dựng bản gộp A+B từ Next Change: cơ chế bôi đen, AI im lặng trong lúc học, mở rộng theo yêu cầu ([`prototype-v2/`](prototype-v2/index.html)) |
+| **Option chịu trách nhiệm chính** | **Option B — Live suggestion rail** *(Cơ chế AI Ask thời gian thực trong lúc học)* |
+| **Xây dựng giải pháp & Human–AI** | Đề xuất cơ chế duyệt từng thẻ gợi ý; chủ trì biên soạn bài toán Hypothesis Problem và xây dựng Human–AI Decision Table |
+| **Evidence & Phỏng vấn** | Interviewer của **NV-01** ở Day 17; đưa trích dẫn quote NV-01 và phân tích rào cản thao tác vào Evidence Snapshot |
+| **Deploy & Hạ tầng** | Deploy 3 prototype & trang Hub lên Netlify ([`chipper-basbousa-bccf28.netlify.app`](https://chipper-basbousa-bccf28.netlify.app/prototype/)), tạo môi trường truy cập live cho tester |
+| **Facilitation & Feedback** | Facilitate **Phiên 2 (Tester 2)**; trực tiếp ghi chép quan sát và lập tài liệu [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md) |
+| **Đồng tổng hợp bài học** | Phối hợp tổng hợp kết quả 2 phiên test, rút ra bài học Next Change và đồng thiết kế **Phương án D** |
 
-**Trần Thị Vân Anh — MHV `2A202601411`**
+---
 
-| Hạng mục | Phần Vân Anh làm |
+### 👨‍💻 Nguyễn Quang Vinh — MHV `2A202601049` (Member)
+
+| Hạng mục | Phần Vinh phụ trách |
 | :--- | :--- |
-| **Option chịu trách nhiệm chính** | **Option B — Live suggestion rail** |
-| **Evidence** | Là interviewer của **NV-01** ở Day 17 |
-| **Deploy** | Deploy prototype lên môi trường truy cập được để tester bên ngoài vào test |
-| **Facilitation** | Facilitate **phiên 2** với `T2` — [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md) |
+| **Option chịu trách nhiệm chính** | **Option A — Marker-first** và **Option C — Auto recap** *(Cơ chế AI Don't Act & AI Act)* |
+| **Shared context / content** | Dựng content fixture dùng chung: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm; khóa Comparison Contract |
+| **Shared visual components** | Header, player mock, panel phải, bảng màu, chip nguồn và reset path (`Bắt đầu lại` / `Tất cả phương án`) dùng chung cho A/B/C |
+| **Evidence & Phỏng vấn** | Interviewer của **NV-02** ở Day 17; đưa quote NV-02 vào Evidence Snapshot và phân tích workflow thực tế |
+| **Chuẩn bị test** | Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation, bảng counterbalance thứ tự A/B/C ([`test-script.md`](test-script.md)) |
+| **Facilitation & Feedback** | Facilitate **Phiên 1 (Tester 1)**; trực tiếp lập tài liệu [`prototype-feedback-note.md`](prototype-feedback-note.md) |
+| **Đồng tổng hợp bài học** | Phối hợp tổng hợp Group Feedback Synthesis và lập trình giao diện bản gộp **Phương án D** ([`prototype-v2/`](prototype-v2/index.html)) |
 
 ---
 
