@@ -14,7 +14,7 @@ Tester **luôn bắt đầu từ hub**, không mở thẳng vào một option.
 | Phương án B — Live suggestion rail | …/prototype/option-b.html |
 | Phương án C — Auto recap | …/prototype/option-c.html |
 
-> **Bản deploy dùng trong hai phiên test** *(Trần Thị Vân Anh deploy để tester truy cập)*: `<<https://chipper-basbousa-bccf28.netlify.app>>`
+> **Bản deploy dùng trong hai phiên test** : https://chipper-basbousa-bccf28.netlify.app 
 
 Ba prototype này **giữ nguyên trạng thái lúc test**, không sửa sau khi có feedback — chúng là bằng chứng đi kèm hai Feedback Notes.
 
