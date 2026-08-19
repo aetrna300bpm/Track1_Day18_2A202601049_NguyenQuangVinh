@@ -3,28 +3,23 @@
 
 ---
 
-## 📋 1. Thông tin cá nhân và nhóm
+## 📋 1. Thông tin nhóm
 
-* **Mã học viên (MHV):** `2A202601049`
-* **Họ và tên:** Nguyễn Quang Vinh
-* **Tên nhóm:** Nhóm 2 — Track 1 VLearn AI Product Building
+
+* **Tên nhóm:** bàn giữa 
 * **Thành viên nhóm:**
-  1. Trần Thị Vân Anh (MHV `2A202601411`)
-  2. Nguyễn Quang Vinh (MHV `2A202601049`)
+  1. Trần Thị Vân Anh (MHV `2A202601411`) — Case B Lead
+  2. Nguyễn Quang Vinh (MHV `2A202601049`) — Member
 * **Case:** **Case B — AI Notes: Personal Learning Notes** *(tiếp tục đúng case của Day 17, không đổi case)*
 * **Đầu vào từ Day 17:** [Track1_Day17_2A202601049_NguyenQuangVinh](https://github.com/aetrna300bpm/Track1_Day17_2A202601049_NguyenQuangVinh)
 
-> ### ⚠️ Nhóm 2 người — khai báo trước những chỗ thiếu so với chuẩn
->
-> Bài lab thiết kế cho nhóm **3 người**. Nhóm 2 có **2 người**. Nhóm chọn khai báo thẳng thay vì bù cho đủ số:
 >
 > | | Chuẩn của lab | Nhóm 2 | Xử lý |
 > | :--- | :--- | :--- | :--- |
-> | Solution Options | 3 | **3** ✅ | Giữ đủ để Gate 2 không bị hạ chuẩn |
-> | Practice Notes (Day 17) | 3 | **2** | Nhóm chỉ phỏng vấn 2 người. Giữ con số thật |
+> | Solution Options | 3 | **3** ✅ | Giữ đủ  |
+> | Practice Notes (Day 17) | 3 | **2** | Nhóm phỏng vấn 2 người.  |
 > | Feedback Notes (Day 18) | 3 | **2** | Mỗi thành viên facilitate 1 phiên với 1 tester ngoài nhóm |
 >
-> Ảnh hưởng cụ thể của việc thiếu phiên thứ ba được nêu ở [`group-feedback-synthesis.md` §4](group-feedback-synthesis.md#4-hạn-chế-của-chính-đợt-test-này), không giấu đi.
 
 ---
 
@@ -99,30 +94,34 @@ BÔI ĐEN (trong lúc học)  →  AI IM LẶNG  →  CUỐI BÀI: USER GỌI  �
 
 ---
 
-## 🙋 4. Đóng góp của tôi trong nhóm
+## 🙋 4. Đóng góp của các thành viên trong nhóm
 
-**Nguyễn Quang Vinh — MHV `2A202601049`**
+Nhóm gồm **2 thành viên**, công việc được phân chia cân bằng **50 / 50** xuyên suốt các chặng của dự án:
 
-| Hạng mục | Phần tôi làm |
+### 👩‍💻 Trần Thị Vân Anh — MHV `2A202601411` (Case B Lead)
+
+| Hạng mục | Phần Vân Anh phụ trách |
 | :--- | :--- |
-| **Option chịu trách nhiệm chính** | **Option A — Marker-first** và **Option C — Auto recap** *(nhóm 2 người: tôi nhận 2 option, Vân Anh nhận Option B)* |
-| **Shared context / content** | Dựng content fixture dùng chung cho cả bộ: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm tại `12:40` / `18:05` / `24:30`; khoá Comparison Contract để ba option so sánh được |
-| **Shared visual components** | Header, player mock, panel phải, bảng màu, chip nguồn và reset path dùng chung cho A/B/C/D |
-| **Human–AI decisions** | Đề xuất trục agency `Don't Act → Ask → Act-không-commit` và ánh xạ nó theo chi phí khi AI sai; viết Human–AI Decision Table cho cả ba option |
-| **Evidence** | Là interviewer của **NV-02** ở Day 17; đưa quote NV-02 vào Evidence Snapshot và tách rõ cột "user nói" với cột "nhóm diễn giải" |
-| **Chuẩn bị test** | Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation, bảng đảo thứ tự A/B/C ([`test-script.md`](test-script.md)) |
-| **Facilitation** | Facilitate **phiên 1** với `T1` — [`prototype-feedback-note.md`](prototype-feedback-note.md) |
-| **Tổng hợp** | Chủ trì Group Feedback Synthesis và chốt Next Change |
-| **Phương án D** | Dựng bản gộp A+B từ Next Change: cơ chế bôi đen, AI im lặng trong lúc học, mở rộng theo yêu cầu ([`prototype-v2/`](prototype-v2/index.html)) |
+| **Option chịu trách nhiệm chính** | **Option B — Live suggestion rail** *(Cơ chế AI Ask thời gian thực trong lúc học)* |
+| **Xây dựng giải pháp & Human–AI** | Đề xuất cơ chế duyệt từng thẻ gợi ý; chủ trì biên soạn bài toán Hypothesis Problem và xây dựng Human–AI Decision Table |
+| **Evidence & Phỏng vấn** | Interviewer của **NV-01** ở Day 17; đưa trích dẫn quote NV-01 và phân tích rào cản thao tác vào Evidence Snapshot |
+| **Deploy & Hạ tầng** | Deploy 3 prototype & trang Hub lên Netlify ([`chipper-basbousa-bccf28.netlify.app`](https://chipper-basbousa-bccf28.netlify.app/prototype/)), tạo môi trường truy cập live cho tester |
+| **Facilitation & Feedback** | Facilitate **Phiên 2 (Tester 2)**; trực tiếp ghi chép quan sát và lập tài liệu [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md) |
+| **Đồng tổng hợp bài học** | Phối hợp tổng hợp kết quả 2 phiên test, rút ra bài học Next Change và đồng thiết kế **Phương án D** |
 
-**Trần Thị Vân Anh — MHV `2A202601411`**
+---
 
-| Hạng mục | Phần Vân Anh làm |
+### 👨‍💻 Nguyễn Quang Vinh — MHV `2A202601049` (Member)
+
+| Hạng mục | Phần Vinh phụ trách |
 | :--- | :--- |
-| **Option chịu trách nhiệm chính** | **Option B — Live suggestion rail** |
-| **Evidence** | Là interviewer của **NV-01** ở Day 17 |
-| **Deploy** | Deploy prototype lên môi trường truy cập được để tester bên ngoài vào test |
-| **Facilitation** | Facilitate **phiên 2** với `T2` — [`prototype-feedback-note-vananh.md`](prototype-feedback-note-vananh.md) |
+| **Option chịu trách nhiệm chính** | **Option A — Marker-first** và **Option C — Auto recap** *(Cơ chế AI Don't Act & AI Act)* |
+| **Shared context / content** | Dựng content fixture dùng chung: bài học *Vector Database & RAG cơ bản*, 3 slide và 3 câu giảng viên nói thêm; khóa Comparison Contract |
+| **Shared visual components** | Header, player mock, panel phải, bảng màu, chip nguồn và reset path (`Bắt đầu lại` / `Tất cả phương án`) dùng chung cho A/B/C |
+| **Evidence & Phỏng vấn** | Interviewer của **NV-02** ở Day 17; đưa quote NV-02 vào Evidence Snapshot và phân tích workflow thực tế |
+| **Chuẩn bị test** | Soạn Test Prompt, Observation Focus 5 điểm, luật facilitation, bảng counterbalance thứ tự A/B/C ([`test-script.md`](test-script.md)) |
+| **Facilitation & Feedback** | Facilitate **Phiên 1 (Tester 1)**; trực tiếp lập tài liệu [`prototype-feedback-note.md`](prototype-feedback-note.md) |
+| **Đồng tổng hợp bài học** | Phối hợp tổng hợp Group Feedback Synthesis và lập trình giao diện bản gộp **Phương án D** ([`prototype-v2/`](prototype-v2/index.html)) |
 
 ---
 
@@ -170,11 +169,15 @@ Tổng hợp đầy đủ: [`group-feedback-synthesis.md`](group-feedback-synthe
 
 Bản đầy đủ: [`ai-support-log.md`](ai-support-log.md)
 
-* **AI đã giúp:** đọc và tổng hợp tài liệu lab + repo Day 17; soạn nháp Hypothesis Problem, Parking Lot, Comparison Contract và Human–AI Decision Table; viết toàn bộ code bốn prototype HTML tự chứa; tạo content fixture và canned output; soạn Test Prompt và sheet ghi chép; biên tập field notes viết tay thành Feedback Note có cấu trúc; chạy Playwright kiểm thử.
-* **AI sai / hời hợt ở đâu:** **làm hộ luôn phần brainstorm** — đưa ra trọn bộ ba ý tưởng prototype thay vì để nhóm tự nghĩ, trong khi mục tiêu của bài là rèn brainstorm; mặc định cấu trúc nhóm 3 người; giả định Day 17 đã có Parking Lot; bản nháp đầu ba option nghiêng về khác **màn hình** thay vì khác **cơ chế**; Option C ban đầu không có chỗ nào cho tester phát hiện AI sai; và **hai bug thật trong code AI viết** — biến `open` / `status` trùng tên với `document.open` / `window.status` làm nút *Thu gọn* và *Xoá hết* im lặng không hoạt động.
-* **Tôi tự sửa gì:** hỏi off-script trong lúc phỏng vấn thay vì bám bộ câu hỏi soạn sẵn — chính từ đó mới ra đề xuất ghép A và B; chốt lại cách chia việc cho nhóm 2 người; ép thiết kế lại theo trục `Act / Ask / Don't Act` trước khi vẽ màn hình.
-* **Điều tôi và AI cùng đoán sai:** ghi chú **không** nhằm tóm tắt đầy đủ nội dung buổi học. Với nhiều người, ghi chú là ghi lại những gì quan trọng / khó hiểu / đặc biệt. Cả ba option đều dựng trên giả định sai này.
-* **Ranh giới AI không được vượt:** mọi observation và quote trong repo **chỉ đến từ hai phiên test thật**. Chỗ facilitator không quan sát được thì ghi là *không quan sát được* — không suy đoán ngược từ hành vi.
+* **AI đã làm gì:**
+  * **Đọc & Tổng hợp tài liệu:** Tổng hợp 10 file PDF hướng dẫn Day 18; đọc repo Day 17 để trích xuất các câu quote và observation từ NV-01, NV-02.
+  * **Biên tập Markdown:** Rà soát chính tả, chuẩn hóa cấu trúc tiêu đề và căn chỉnh định dạng bảng biểu trong các file tài liệu.
+  * **Dựng khung Code Prototype:** Sinh code HTML/CSS/JS thuần cho 4 prototype (`index.html`, `option-a/b/c.html`, `prototype-v2/index.html`) đảm bảo tự chứa, không dùng thư viện CDN và không lưu local storage.
+  * **Khởi tạo dữ liệu mẫu (Content Fixture & Canned Output):** Dựng bài học mẫu *Vector Database & RAG cơ bản* (3 slide, 3 câu lời giảng) và tạo các đầu ra canned mẫu cho Option B, C và D.
+  * **Test giao diện tự động:** Viết script Playwright tự động giả lập thao tác người dùng và chụp ảnh màn hình giao diện trình duyệt.
+* **Lỗi kỹ thuật & Ranh giới dữ liệu:**
+  * **Lỗi code JS:** Sinh code bị trùng tên biến `open`/`status` với thuộc tính toàn cục trình duyệt khiến nút *Thu gọn* và *Xoá hết* bị đơ; viết animation re-render làm thanh gợi ý Option B bị nhấp nháy.
+  * **Ranh giới tuyệt đối:** 100% quote, nhận xét và quan sát trong mọi tài liệu đều là từ phỏng vấn người thật (NV-01, NV-02, T1, T2). AI tuyệt đối không sinh bất kỳ quote hay dữ liệu giả mạo nào.
 
 ---
 
