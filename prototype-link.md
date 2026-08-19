@@ -9,16 +9,16 @@ Ba micro-prototype dùng chung một bài học, một content fixture và một
 
 Tester **luôn bắt đầu từ hub**, không mở thẳng vào một option:
 
-| | Link |
-| :--- | :--- |
-| 🔷 **Hub — bắt đầu ở đây** | https://aetrna300bpm.github.io/Track1_Day18_2A202601049_NguyenQuangVinh/prototype/ |
-| Phương án A | …/prototype/option-a.html |
-| Phương án B | …/prototype/option-b.html |
-| Phương án C | …/prototype/option-c.html |
+| | Link Deploy Netlify (Live) | Link GitHub Pages |
+| :--- | :--- | :--- |
+| 🔷 **Hub — bắt đầu ở đây** | **https://chipper-basbousa-bccf28.netlify.app/prototype/** | https://aetrna300bpm.github.io/Track1_Day18_2A202601049_NguyenQuangVinh/prototype/ |
+| Phương án A (Marker-first) | https://chipper-basbousa-bccf28.netlify.app/prototype/option-a.html | …/prototype/option-a.html |
+| Phương án B (Live Rail) | https://chipper-basbousa-bccf28.netlify.app/prototype/option-b.html | …/prototype/option-b.html |
+| Phương án C (Auto Recap) | https://chipper-basbousa-bccf28.netlify.app/prototype/option-c.html | …/prototype/option-c.html |
 
-> Nếu chưa bật GitHub Pages, ba file chạy được **offline**: tải repo về và mở `prototype/index.html` bằng trình duyệt. Không cần server, không cần cài gì.
-
-**Bật GitHub Pages:** repo → *Settings* → *Pages* → *Source: Deploy from a branch* → `main` / `/ (root)` → *Save*. Chờ ~1 phút rồi mở link hub ở trên.
+> 🌐 **Link Deploy chính thức**: [https://chipper-basbousa-bccf28.netlify.app](https://chipper-basbousa-bccf28.netlify.app) (hoặc trực tiếp Hub [https://chipper-basbousa-bccf28.netlify.app/prototype/](https://chipper-basbousa-bccf28.netlify.app/prototype/)).
+>
+> 📁 **Offline**: Ba file cũng chạy được trực tiếp bằng cách tải repo về và mở `prototype/index.html` trên trình duyệt mà không cần server hay kết nối mạng.
 
 ---
 

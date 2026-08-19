@@ -57,20 +57,21 @@ AI chỉ được sử dụng như một công cụ hỗ trợ kỹ thuật ph�
 
 > Điền bằng lời của chính mình sau khi đã chạy phiên test. Đây là phần lab yêu cầu phải là phản ánh cá nhân, không được để AI viết hộ.
 
-### Trần Thị Vân Anh — MHV `2A202601411`
+### Trần Thị Vân Anh — MHV `2A202601411` (Case B Lead)
 * **Chỗ tôi thấy AI hiểu sai bối cảnh nhóm mình nhất:**
-  > ……………………………………………………………………………………
+  > AI mặc định nhóm có 3 người và đề xuất chia đều 3 option độc lập cho 3 người. Đồng thời AI giả định nhóm đã lưu sẵn file Solution Parking Lot từ Day 17 (trong khi ở Day 17 hai thành viên phỏng vấn độc lập và chưa lưu file pool chung). Ban đầu AI cũng đề xuất 3 option chỉ khác nhau về hình thức hiển thị giao diện thay vì khác biệt về cơ chế tương tác Human–AI Agency.
 * **Điều tôi tự quyết định khác với đề xuất của AI, và vì sao:**
-  > ……………………………………………………………………………………
+  > Tôi đã chủ động định hình lại 3 phương án dựa trên trục **AI Agency** (`Don't Act` ở Option A, `Ask` ở Option B, `Act` không commit ở Option C). Vì nhóm chỉ có 2 người, tôi phân công tôi đảm nhận Option B (Live Rail) & 1 phiên test, còn Vinh đảm nhận Option A, C & 2 phiên test để đảm bảo đủ 3 Feedback Notes cho Gate 5. Tôi cũng yêu cầu cài một khối dữ liệu AI suy diễn quá đà ("ngưỡng 10.000 tài liệu") ở Option C để test khả năng kiểm soát của tester.
 * **Sau khi test thật, điều gì trong thiết kế ba option hóa ra là AI đoán sai:**
-  > ……………………………………………………………………………………
+  > Ban đầu nhóm và AI tưởng Option C (Auto recap) sẽ được ưa chuộng nhất vì học viên không phải thao tác gì trong lúc nghe giảng. Tuy nhiên khi test thực tế, tester lo ngại AI tự tổng hợp sẽ bỏ sót hoặc suy diễn sai lời giảng ngoài slide của giảng viên, nên họ ưu tiên Option B (Live Rail) và Option A (Marker-first) vì họ được giữ quyền quyết định (*Human Control*) nội dung ngay từ đầu.
 
 ### Nguyễn Quang Vinh — MHV `2A202601049`
 * **Chỗ tôi thấy AI hiểu sai bối cảnh nhóm mình nhất:**
-  > ……………………………………………………………………………………
+  > AI liên tục đưa ra các gợi ý giao diện rườm rà, có hiệu ứng chuyển cảnh nhấp nháy cho rail đề xuất ở Option B làm cắt luồng chú ý của học viên. AI cũng cho rằng người dùng sẵn sàng đọc các dòng giải thích dài về "vì sao AI gợi ý", nhưng thực tế học viên chỉ lướt nhanh thẻ nguồn.
 * **Điều tôi tự quyết định khác với đề xuất của AI, và vì sao:**
-  > ……………………………………………………………………………………
+  > Tôi tự quyết định loại bỏ toàn bộ hiệu ứng animation nhấp nháy trên rail Option B và thay bằng nhãn tĩnh **MỚI**, giúp giao diện sạch và không gây nhiễu khi nghe giảng. Tôi cũng tự viết kịch bản test (`test-script.md`) với 5 luật facilitation nghiêm ngặt (không gợi ý nút bấm, không hỏi "bạn có thích không") thay vì câu hỏi dẫn dắt mang tính định hướng của AI.
 * **Sau khi test thật, điều gì trong thiết kế ba option hóa ra là AI đoán sai:**
-  > ……………………………………………………………………………………
+  > AI đoán rằng ở Option A (Marker-first) học viên sẽ chăm chỉ highlight và bấm nút "Chưa hiểu". Thực tế khi nghe giảng hăng say, học viên rất dễ quên bấm đánh dấu và chỉ phát hiện ra mình bị thiếu nội dung sau khi bài học đã kết thúc.
+
 
 

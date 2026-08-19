@@ -55,7 +55,7 @@ Ba option cùng user, cùng situation, cùng task, cùng desired outcome và cù
 | **Trade-off** | Không ghi thừa — nhưng quên đánh dấu là mất luôn | Không bỏ sót — nhưng cắt luồng học | Tốn 0 thao tác — nhưng AI quyết định hộ, và user dễ "gật bừa" |
 | **Prototype** | [`prototype/option-a.html`](prototype/option-a.html) | [`prototype/option-b.html`](prototype/option-b.html) | [`prototype/option-c.html`](prototype/option-c.html) |
 
-**Hub cho tester (bắt đầu ở đây):** [`prototype/index.html`](prototype/index.html) — link đầy đủ trong [`prototype-link.md`](prototype-link.md)
+**Hub cho tester (bắt đầu ở đây):** [https://chipper-basbousa-bccf28.netlify.app/prototype/](https://chipper-basbousa-bccf28.netlify.app/prototype/) (Offline: [`prototype/index.html`](prototype/index.html)) — xem danh sách link trong [`prototype-link.md`](prototype-link.md)
 
 **Distance check**
 
