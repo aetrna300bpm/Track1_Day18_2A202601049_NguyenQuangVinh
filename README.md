@@ -169,11 +169,15 @@ Tổng hợp đầy đủ: [`group-feedback-synthesis.md`](group-feedback-synthe
 
 Bản đầy đủ: [`ai-support-log.md`](ai-support-log.md)
 
-* **Phân định vai trò:** **Con người (Vân Anh & Vinh) nắm giữ 100% ý tưởng (idea), định hướng và biên soạn toàn bộ tài liệu chính (doc chính)**. AI chỉ đóng vai trò trợ lý kỹ thuật / định dạng tối thiểu (dọn dẹp Markdown, sinh khung code HTML/CSS từ thiết kế có sẵn, hỗ trợ script Playwright test giao diện).
-* **Con người tự làm (100% Idea & Doc chính):** Đưa ra Hypothesis Problem từ phỏng vấn Day 17; tự thiết kế 3 Solution Options (Option A: Marker-first, Option B: Live suggestion rail, Option C: Auto recap) theo 3 cấp độ AI Agency (`Don't Act`, `Ask`, `Act`); xây dựng Comparison Contract & Human–AI Decision Table; tự tay biên soạn 100% tài liệu `three-option-design-sheet.md`, `README.md`, `test-script.md`, `group-feedback-synthesis.md`; trực tiếp phỏng vấn 2 phiên test thật và tự đề xuất **Phương án D (Next Change)**.
-* **AI hỗ trợ phụ trợ (Tối thiểu):** Rà soát chính tả & dọn dẹp định dạng bảng biểu Markdown; sinh khung code HTML/CSS tĩnh dựa trên đúng wireframe/spec do nhóm quy định; gắn dữ liệu mẫu (content fixture) theo kịch bản; hỗ trợ script Playwright tự động chụp ảnh màn hình.
-* **AI sai / hời hợt ở đâu & con người đã sửa:** AI từng có xu hướng đề xuất các giải pháp tự động hóa ôm đồm -> Con người bác bỏ để giữ quyền chủ động cho người học; AI mặc định cấu trúc nhóm 3 người -> Con người tự điều chỉnh lại cho nhóm 2 người; **bug thật trong code AI viết** (biến `open` / `status` trùng với thuộc tính toàn cục trình duyệt khiến nút *Thu gọn* và *Xoá hết* bị đơ) -> Con người tự debug và refactor lại hàm xử lý JS.
-* **Ranh giới AI tuyệt đối không vượt:** 100% quote, observation trong mọi tài liệu đều đến từ hai phiên test thật với người dùng (`T1`, `T2`). AI tuyệt đối không sinh bất kỳ dữ liệu hay nhận xét giả mạo nào.
+* **AI đã làm gì:**
+  * **Đọc & Tổng hợp tài liệu:** Tổng hợp 10 file PDF hướng dẫn Day 18; đọc repo Day 17 để trích xuất các câu quote và observation từ NV-01, NV-02.
+  * **Biên tập Markdown:** Rà soát chính tả, chuẩn hóa cấu trúc tiêu đề và căn chỉnh định dạng bảng biểu trong các file tài liệu.
+  * **Dựng khung Code Prototype:** Sinh code HTML/CSS/JS thuần cho 4 prototype (`index.html`, `option-a/b/c.html`, `prototype-v2/index.html`) đảm bảo tự chứa, không dùng thư viện CDN và không lưu local storage.
+  * **Khởi tạo dữ liệu mẫu (Content Fixture & Canned Output):** Dựng bài học mẫu *Vector Database & RAG cơ bản* (3 slide, 3 câu lời giảng) và tạo các đầu ra canned mẫu cho Option B, C và D.
+  * **Test giao diện tự động:** Viết script Playwright tự động giả lập thao tác người dùng và chụp ảnh màn hình giao diện trình duyệt.
+* **Lỗi kỹ thuật & Ranh giới dữ liệu:**
+  * **Lỗi code JS:** Sinh code bị trùng tên biến `open`/`status` với thuộc tính toàn cục trình duyệt khiến nút *Thu gọn* và *Xoá hết* bị đơ; viết animation re-render làm thanh gợi ý Option B bị nhấp nháy.
+  * **Ranh giới tuyệt đối:** 100% quote, nhận xét và quan sát trong mọi tài liệu đều là từ phỏng vấn người thật (NV-01, NV-02, T1, T2). AI tuyệt đối không sinh bất kỳ quote hay dữ liệu giả mạo nào.
 
 ---
 
