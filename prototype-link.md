@@ -14,7 +14,7 @@ Tester **luôn bắt đầu từ hub**, không mở thẳng vào một option.
 | Phương án B — Live suggestion rail | …/prototype/option-b.html |
 | Phương án C — Auto recap | …/prototype/option-c.html |
 
-> **Bản deploy dùng trong hai phiên test** *(Trần Thị Vân Anh deploy để tester truy cập)*: `<<VÂN ANH ĐIỀN LINK VÀO ĐÂY>>`
+> **Bản deploy dùng trong hai phiên test** *(Trần Thị Vân Anh deploy để tester truy cập)*: `<<https://chipper-basbousa-bccf28.netlify.app>>`
 
 Ba prototype này **giữ nguyên trạng thái lúc test**, không sửa sau khi có feedback — chúng là bằng chứng đi kèm hai Feedback Notes.
 
@@ -25,6 +25,8 @@ Ba prototype này **giữ nguyên trạng thái lúc test**, không sửa sau kh
 | ✨ **Phương án D** | https://aetrna300bpm.github.io/Track1_Day18_2A202601049_NguyenQuangVinh/prototype-v2/ |
 
 Đây là **Next Change đã dựng thành prototype**, chưa được test với ai. Không dùng để so sánh với A/B/C, vì nó ra đời **sau** và **nhờ** hai phiên test đó. Thiết kế: [`three-option-design-sheet.md` §6](three-option-design-sheet.md#chặng-6--sau-khi-test--phương-án-d).
+
+> Truy cập link online : https://leafy-frangipane-a83e8b.netlify.app
 
 > Nếu chưa bật GitHub Pages, tất cả các file chạy được **offline**: tải repo về và mở `prototype/index.html` hoặc `prototype-v2/index.html` bằng trình duyệt. Không cần server, không cần cài gì.
 >
