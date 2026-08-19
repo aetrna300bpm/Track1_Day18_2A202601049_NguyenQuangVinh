@@ -111,10 +111,10 @@ Human–AI Decision Table đầy đủ (expectation · role & agency · evidence
 
 Tóm tắt — bản đầy đủ ở [`ai-support-log.md`](ai-support-log.md):
 
-* **AI đã giúp:** đọc và tổng hợp tài liệu lab + repo Day 17; soạn nháp Hypothesis Problem, Parking Lot, Comparison Contract và Human–AI Decision Table; viết toàn bộ code ba prototype HTML tự chứa; tạo content fixture và canned output; soạn Test Prompt và template feedback; chạy Playwright kiểm thử ba luồng.
-* **AI sai / hời hợt ở đâu:** mặc định cấu trúc nhóm 3 người trong khi nhóm có 2; giả định Day 17 đã có sẵn Solution Parking Lot (thực tế không có); bản nháp đầu ba option nghiêng về khác **màn hình** thay vì khác **cơ chế** — đúng anti-pattern của lab; Option C ban đầu không có chỗ nào cho tester phát hiện AI sai; code Option B nhấp nháy toàn bộ rail mỗi lần re-render.
-* **Đã tự sửa gì:** chốt lại cách chia việc để vẫn đủ ba Feedback Notes; dựng lại Parking Lot công khai từ evidence và ghi rõ là bản tái tạo; ép thiết kế lại theo trục `Act / Ask / Don't Act` trước khi vẽ màn hình; cài một khối AI suy diễn quá đà vào Option C để test Human control; thay animation bằng nhãn tĩnh sau khi soi ảnh chụp Playwright.
-* **Ranh giới AI không được vượt:** mọi observation, quote và feedback trong bài **chỉ đến từ phiên test thật**. Feedback Note và Group Synthesis được để trống có cấu trúc, không có một dòng nào do AI sinh ra.
+* **Công việc của con người (100% người thực hiện):** Nghiên cứu tài liệu lab, tổng hợp quote phỏng vấn Day 17, xây dựng bài toán Hypothesis Problem, lập Solution Parking Lot, biên soạn Comparison Contract & Distance Check, xây dựng Human–AI Decision Table, trực tiếp viết toàn bộ các tài liệu (docs) thiết kế (`README.md`, `three-option-design-sheet.md`), và biên soạn kịch bản kiểm thử (`test-script.md`).
+* **Phạm vi AI hỗ trợ (Phụ trợ kỹ thuật):** Hỗ trợ viết khung code HTML/CSS/JS thuần cho 3 file prototype, sinh văn bản giả lập mẫu (*canned output*) cho bài học/gợi ý, và rà soát kiểm thử kỹ thuật giao diện bằng Playwright.
+* **AI sai / hời hợt ở đâu:** Đề xuất 3 option nghiêng về khác biệt màn hình thay vì cơ chế; mặc định nhóm 3 người; sinh bản nháp Option C "hoàn hảo" không có lỗi.
+* **Đã tự sửa thế nào:** Nhóm bác bỏ đề xuất của AI, tự chốt thiết kế theo trục agency `Act / Ask / Don't Act`, chủ động cài 1 khối dữ liệu suy diễn quá đà để test Human control, và tự thực hiện toàn bộ phiên kiểm thử người dùng thực tế.
 
 ---
 
